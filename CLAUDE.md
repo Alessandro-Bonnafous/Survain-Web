@@ -105,6 +105,10 @@ npm run format   # Prettier
   - Pas de suppression distante (`delete_remote_files` laissé à `false`) :
     l'upload écrase les fichiers mais ne nettoie pas les anciens assets hashés.
     À réévaluer si l'accumulation devient gênante.
+  - En mode `sftp_only`, l'action **ne crée pas** le dossier distant. Ajout d'une
+    étape `Ensure remote staging directory exists` (sshpass + `sftp -b`) qui fait
+    un `-mkdir /www/staging` avant l'upload. La prod déploie dans `/www/` (racine
+    déjà existante) → pas d'étape équivalente nécessaire.
 
 ## Décisions en attente
 
