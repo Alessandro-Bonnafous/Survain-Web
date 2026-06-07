@@ -1,0 +1,16 @@
+{
+  "site": {
+    "title": "SURVAIN",
+    "tagline": "Survival, conquest, Norse mythology"
+  },
+  "nav": {
+    "home": "Home",
+    "gameplay": "Gameplay",
+    "community": "Community"
+  },
+  "coming_soon": "The official site is being built",
+  "lang": {
+    "fr": "Français",
+    "en": "English"
+  }
+}
