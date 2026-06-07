@@ -35,9 +35,10 @@ jobs:
           SFTP_PORT: ${{ secrets.OVH_SFTP_PORT }}
         run: |
           sudo apt-get update -qq && sudo apt-get install -y -qq sshpass
-          printf '%s\n' '-mkdir /www/staging' | sshpass -p "$SFTP_PASS" \
-            sftp -P "$SFTP_PORT" -o StrictHostKeyChecking=no \
-            -o UserKnownHostsFile=/dev/null -b - "$SFTP_USER@$SFTP_HOST"
+          sshpass -p "$SFTP_PASS" sftp -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null -o BatchMode=no -P "$SFTP_PORT" "$SFTP_USER@$SFTP_HOST" <<'EOF'
+          -mkdir /www/staging
+          bye
+          EOF
 
       - name: Deploy to OVH (staging) via SFTP
         uses: wlixcc/SFTP-Deploy-Action@v1.2.6
