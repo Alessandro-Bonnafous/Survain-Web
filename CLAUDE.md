@@ -94,6 +94,18 @@ npm run format   # Prettier
     `.nvmrc` et la CI restent volontairement sur **Node 20** (standard d'équipe
     imposé). La stack build de façon identique sur les deux versions.
 
+- **2026-06-07 — Fix déploiement : SFTP via `wlixcc/SFTP-Deploy-Action`**
+  - `SamKirkland/FTP-Deploy-Action@v4.3.5` (préconisé au bootstrap) ne supporte
+    **pas** le protocole SFTP (uniquement `ftp`/`ftps`/`ftps-legacy`) → la CI
+    échouait avec « protocol: invalid parameter - you provided "sftp" ».
+  - Remplacé dans `deploy-staging.yml` et `deploy-prod.yml` par
+    **`wlixcc/SFTP-Deploy-Action@v1.2.6`** (vrai SFTP, port 22, mêmes secrets
+    `OVH_SFTP_*`). `sftp_only: true` est requis car l'offre OVH mutualisée PERSO
+    n'a pas de `rsync` côté serveur (l'action l'utilise sinon par défaut).
+  - Pas de suppression distante (`delete_remote_files` laissé à `false`) :
+    l'upload écrase les fichiers mais ne nettoie pas les anciens assets hashés.
+    À réévaluer si l'accumulation devient gênante.
+
 ## Décisions en attente
 
 - **Intégration maquette Thierry** (UX/design) — en cours côté Thierry. Le

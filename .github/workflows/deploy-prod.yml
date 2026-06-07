@@ -29,15 +29,15 @@ jobs:
         run: npm run build
 
       - name: Deploy to OVH (production) via SFTP
-        uses: SamKirkland/FTP-Deploy-Action@v4.3.5
+        uses: wlixcc/SFTP-Deploy-Action@v1.2.6
         with:
-          protocol: sftp
           server: ${{ secrets.OVH_SFTP_HOST }}
           username: ${{ secrets.OVH_SFTP_USER }}
           password: ${{ secrets.OVH_SFTP_PASSWORD }}
           port: ${{ secrets.OVH_SFTP_PORT }}
-          local-dir: ./dist/
-          server-dir: /www/
+          local_path: './dist/*'
+          remote_path: '/www/'
+          sftp_only: true
 
       - name: Create GitHub Release
         uses: softprops/action-gh-release@v2
