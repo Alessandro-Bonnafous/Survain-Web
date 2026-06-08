@@ -110,6 +110,19 @@ npm run format   # Prettier
     un `-mkdir /www/staging` avant l'upload. La prod déploie dans `/www/` (racine
     déjà existante) → pas d'étape équivalente nécessaire.
 
+- **2026-06-08 — Fix déploiement : chemins SFTP relatifs (`www/`, pas `/www/`)**
+  - La CI staging échouait encore : `remote mkdir "/www/staging": No such file
+    or directory` puis `Multiple paths match, but destination "/www/staging/"
+    is not a directory`.
+  - Cause : sur le mutualisé OVH, la session SFTP atterrit dans le **home** du
+    compte ; le dossier web racine `www` est un chemin **relatif**. Le chemin
+    **absolu** `/www` n'existe pas → l'hypothèse « `/www/` racine existante »
+    (entrée précédente) était fausse, pour staging **comme** pour prod.
+  - Correctif : passage en relatif dans les deux workflows — `www/staging` (+
+    `-mkdir www/staging`) pour staging, `www/` pour prod. `www` existant déjà,
+    aucune étape mkdir n'est nécessaire côté prod. Run staging vert confirmé.
+  - Secrets OVH (`OVH_SFTP_HOST/USER/PASSWORD/PORT`) : OK, la connexion réussit.
+
 ## Décisions en attente
 
 - **Intégration maquette Thierry** (UX/design) — en cours côté Thierry. Le
