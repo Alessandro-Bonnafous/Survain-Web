@@ -42,6 +42,22 @@ jobs:
           bye
           EOF
 
+      # DIAGNOSTIC TEMPORAIRE — inspecter la nature de `www` (dossier ? symlink ?)
+      # et le contenu du home OVH, pour comprendre l'echec d'upload prod.
+      - name: DIAG remote layout
+        env:
+          SFTP_HOST: ${{ secrets.OVH_SFTP_HOST }}
+          SFTP_USER: ${{ secrets.OVH_SFTP_USER }}
+          SFTP_PASS: ${{ secrets.OVH_SFTP_PASSWORD }}
+          SFTP_PORT: ${{ secrets.OVH_SFTP_PORT }}
+        run: |
+          sshpass -p "$SFTP_PASS" sftp -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null -o BatchMode=no -P "$SFTP_PORT" "$SFTP_USER@$SFTP_HOST" <<'EOF'
+          pwd
+          ls -la
+          ls -la www
+          ls -la www/staging
+          EOF
+
       - name: Deploy to OVH (staging) via SFTP
         uses: wlixcc/SFTP-Deploy-Action@v1.2.6
         with:
