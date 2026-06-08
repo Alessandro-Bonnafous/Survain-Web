@@ -28,6 +28,23 @@ jobs:
       - name: Build
         run: npm run build
 
+      # En mode sftp_only, l'action ne crée pas le dossier distant, et
+      # `put -r ./dist/*` (sources multiples) exige que la destination existe
+      # déjà. On s'assure donc que `www` existe (chemin relatif au home OVH ;
+      # le `-` devant mkdir ignore l'erreur si le dossier est déjà présent).
+      - name: Ensure remote production directory exists
+        env:
+          SFTP_HOST: ${{ secrets.OVH_SFTP_HOST }}
+          SFTP_USER: ${{ secrets.OVH_SFTP_USER }}
+          SFTP_PASS: ${{ secrets.OVH_SFTP_PASSWORD }}
+          SFTP_PORT: ${{ secrets.OVH_SFTP_PORT }}
+        run: |
+          sudo apt-get update -qq && sudo apt-get install -y -qq sshpass
+          sshpass -p "$SFTP_PASS" sftp -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null -o BatchMode=no -P "$SFTP_PORT" "$SFTP_USER@$SFTP_HOST" <<'EOF'
+          -mkdir www
+          bye
+          EOF
+
       - name: Deploy to OVH (production) via SFTP
         uses: wlixcc/SFTP-Deploy-Action@v1.2.6
         with:
@@ -37,7 +54,7 @@ jobs:
           port: ${{ secrets.OVH_SFTP_PORT }}
           # Chemin RELATIF : la session SFTP OVH démarre dans le home du
           # compte, où `www` est la racine web (le chemin absolu `/www` n'existe
-          # pas). `www` existe déjà → pas d'étape mkdir nécessaire ici.
+          # pas).
           local_path: './dist/*'
           remote_path: 'www/'
           sftp_only: true
