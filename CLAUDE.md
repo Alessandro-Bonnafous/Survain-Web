@@ -123,6 +123,21 @@ npm run format   # Prettier
     aucune étape mkdir n'est nécessaire côté prod. Run staging vert confirmé.
   - Secrets OVH (`OVH_SFTP_HOST/USER/PASSWORD/PORT`) : OK, la connexion réussit.
 
+- **2026-06-08 — Fix déploiement prod : suppression du symlink `www/index.html`**
+  - Au premier tag `v0.1.0`, le deploy prod échouait sur
+    `dest open ".../www/index.html": No such file or directory`, alors que
+    `assets/` et `favicon.svg` s'uploadaient bien.
+  - Diagnostic (via une étape temporaire `ls -la` dans le workflow staging,
+    même compte OVH) : `www/index.html` est un **symlink** (la page de parking
+    OVH par défaut, propriétaire `ovh`). Le `put` SFTP suit le symlink et tente
+    d'écrire dans sa cible non writable → erreur. Staging n'était pas concerné
+    (`www/staging/` est un dossier neuf sans ce symlink).
+  - Correctif : étape `Prepare remote production directory` qui fait
+    `-mkdir www` puis `-rm www/index.html` avant l'upload (le `-` ignore
+    l'absence). Le `put` crée ensuite un vrai `index.html`.
+  - Le tag `v0.1.0` (et sa Release vide) a été recréé sur le commit corrigé
+    (rien n'avait été déployé sur les tentatives précédentes).
+
 ## Décisions en attente
 
 - **Intégration maquette Thierry** (UX/design) — en cours côté Thierry. Le

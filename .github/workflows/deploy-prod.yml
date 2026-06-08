@@ -30,9 +30,14 @@ jobs:
 
       # En mode sftp_only, l'action ne crée pas le dossier distant, et
       # `put -r ./dist/*` (sources multiples) exige que la destination existe
-      # déjà. On s'assure donc que `www` existe (chemin relatif au home OVH ;
-      # le `-` devant mkdir ignore l'erreur si le dossier est déjà présent).
-      - name: Ensure remote production directory exists
+      # déjà. On prépare donc `www` :
+      #   - `-mkdir www` : s'assure que le dossier existe (no-op s'il existe) ;
+      #   - `-rm www/index.html` : supprime le symlink « page par défaut » OVH
+      #     (index.html -> page de parking, propriétaire `ovh`). Sans ça, le
+      #     `put` suit le symlink et écrit dans une cible non writable →
+      #     « dest open .../www/index.html: No such file or directory ».
+      # Le `-` devant chaque commande ignore l'erreur si l'élément est absent.
+      - name: Prepare remote production directory
         env:
           SFTP_HOST: ${{ secrets.OVH_SFTP_HOST }}
           SFTP_USER: ${{ secrets.OVH_SFTP_USER }}
@@ -42,6 +47,7 @@ jobs:
           sudo apt-get update -qq && sudo apt-get install -y -qq sshpass
           sshpass -p "$SFTP_PASS" sftp -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null -o BatchMode=no -P "$SFTP_PORT" "$SFTP_USER@$SFTP_HOST" <<'EOF'
           -mkdir www
+          -rm www/index.html
           bye
           EOF
 
