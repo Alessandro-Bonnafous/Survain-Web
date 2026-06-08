@@ -35,8 +35,11 @@ jobs:
           username: ${{ secrets.OVH_SFTP_USER }}
           password: ${{ secrets.OVH_SFTP_PASSWORD }}
           port: ${{ secrets.OVH_SFTP_PORT }}
+          # Chemin RELATIF : la session SFTP OVH démarre dans le home du
+          # compte, où `www` est la racine web (le chemin absolu `/www` n'existe
+          # pas). `www` existe déjà → pas d'étape mkdir nécessaire ici.
           local_path: './dist/*'
-          remote_path: '/www/'
+          remote_path: 'www/'
           sftp_only: true
 
       - name: Create GitHub Release

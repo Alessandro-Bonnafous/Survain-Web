@@ -25,8 +25,10 @@ jobs:
         run: npm run build
 
       # En mode sftp_only, l'action de déploiement ne crée pas le dossier
-      # distant. On s'assure donc que /www/staging existe (le `-` devant mkdir
-      # ignore l'erreur si le dossier est déjà présent).
+      # distant. Sur le mutualisé OVH, la session SFTP atterrit dans le home du
+      # compte : le dossier web `www` est un chemin RELATIF (le chemin absolu
+      # `/www` n'existe pas). On crée donc `www/staging` en relatif (le `-`
+      # devant mkdir ignore l'erreur si le dossier existe déjà).
       - name: Ensure remote staging directory exists
         env:
           SFTP_HOST: ${{ secrets.OVH_SFTP_HOST }}
@@ -36,7 +38,7 @@ jobs:
         run: |
           sudo apt-get update -qq && sudo apt-get install -y -qq sshpass
           sshpass -p "$SFTP_PASS" sftp -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null -o BatchMode=no -P "$SFTP_PORT" "$SFTP_USER@$SFTP_HOST" <<'EOF'
-          -mkdir /www/staging
+          -mkdir www/staging
           bye
           EOF
 
@@ -48,5 +50,5 @@ jobs:
           password: ${{ secrets.OVH_SFTP_PASSWORD }}
           port: ${{ secrets.OVH_SFTP_PORT }}
           local_path: './dist/*'
-          remote_path: '/www/staging/'
+          remote_path: 'www/staging/'
           sftp_only: true
