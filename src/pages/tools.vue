@@ -58,7 +58,19 @@ import {
   weaponsOf,
 } from '@/content/craft'
 
-const { t } = useI18n()
+const { t, te, locale } = useI18n()
+
+/**
+ * Traduit une valeur catégorielle énumérable (outil, type, rôle…). Le FR est
+ * la langue canonique des données (affichée telle quelle) ; les autres locales
+ * sont traduites via le dictionnaire `tools.values`, avec repli sur la valeur
+ * brute si absente. Les noms propres d'items restent non traduits.
+ */
+function tv(value: string): string {
+  if (locale.value === 'fr') return value
+  const key = `tools.values.${value}`
+  return te(key) ? t(key) : value
+}
 
 const SECTIONS = ['recolte', 'constructions', 'processing', 'weapons', 'armors'] as const
 type Section = (typeof SECTIONS)[number]
@@ -89,14 +101,21 @@ const table = computed<TableData>(() => {
           t(`${h}.t3`),
           t(`${h}.annexes`),
         ],
-        rows: resourcesOf(biomeId.value).map((r) => [r.outil, r.type, r.t1, r.t2, r.t3, r.annexes]),
+        rows: resourcesOf(biomeId.value).map((r) => [
+          tv(r.outil),
+          tv(r.type),
+          r.t1,
+          r.t2,
+          r.t3,
+          r.annexes,
+        ]),
       }
     }
     case 'constructions': {
       const h = 'tools.headers.construction'
       return {
         headers: [t(`${h}.building`), t(`${h}.t1`), t(`${h}.t2`), t(`${h}.t3`)],
-        rows: constructions.map((c) => [c.Batiments, c.T1, c.T2, c.T3]),
+        rows: constructions.map((c) => [tv(c.Batiments), c.T1, c.T2, c.T3]),
       }
     }
     case 'processing': {
@@ -104,7 +123,7 @@ const table = computed<TableData>(() => {
       return {
         headers: [t(`${h}.category`), t(`${h}.t1`), t(`${h}.t2`), t(`${h}.t3`)],
         rows: processing.map((p) => [
-          p.Catégorie,
+          tv(p.Catégorie),
           p['T1 - Hutte Craft'],
           p['T2 - Maison Artisanale'],
           p['T3 - Hall des Artisans'],
@@ -126,8 +145,8 @@ const table = computed<TableData>(() => {
           t(`${h}.resource`),
         ],
         rows: weaponsOf(biomeId.value, tier.value).map((w) => [
-          w.Catégorie,
-          w.Rôle,
+          tv(w.Catégorie),
+          tv(w.Rôle),
           w.Arme,
           w['Qté Totale'],
           w['Bois craft'],
@@ -154,8 +173,8 @@ const table = computed<TableData>(() => {
           t(`${h}.animal`),
         ],
         rows: armorsOf(biomeId.value, tier.value).map((a) => [
-          a.Type,
-          a.Résistance,
+          tv(a.Type),
+          tv(a.Résistance),
           a.Armure,
           a['Qté base'],
           a['Qté biome supplémentaire'],
