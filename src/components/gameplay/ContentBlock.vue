@@ -37,7 +37,7 @@ import type {
   SelectorOptionRef,
 } from '@/content/gameplay/types'
 import { gameplayImages } from '@/content/gameplay/images'
-import InfoTable from './InfoTable.vue'
+import InfoTable from '@/components/ui/InfoTable.vue'
 import ExampleSelector from './ExampleSelector.vue'
 
 // `name` explicite pour permettre l'auto-référence récursive (blocs de sélecteur).

@@ -1,6 +1,6 @@
 import { describe, expect, it } from 'vitest'
 import { mount } from '@vue/test-utils'
-import InfoTable from '@/components/gameplay/InfoTable.vue'
+import InfoTable from '@/components/ui/InfoTable.vue'
 
 describe('InfoTable', () => {
   it('rend les en-têtes et les lignes', () => {
