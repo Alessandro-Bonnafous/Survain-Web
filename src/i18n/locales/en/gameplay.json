@@ -1,0 +1,383 @@
+{
+  "terms": {
+    "biome": {
+      "forest": "Forest",
+      "plains": "Plains",
+      "mountains": "Mountains",
+      "coast": "Coast"
+    },
+    "resource": {
+      "plant": "Plant",
+      "mineral": "Mineral",
+      "animal": "Animal"
+    },
+    "weaponHead": {
+      "type": "Type",
+      "skill": "Skill name",
+      "effect": "Effect"
+    },
+    "weaponRole": {
+      "main": "Main attack",
+      "control": "Control",
+      "defense": "Protect / Defence",
+      "mobility": "Mobility",
+      "ultimate": "Ultimate"
+    }
+  },
+  "progression": {
+    "title": "Progression and Territorial Structure",
+    "contrees": {
+      "title": "The Lands",
+      "summary": "Choice of starting biome: Forests, Plains, Mountains or Coast, each with its own resources and specialisations.",
+      "p0": "Resources are distributed as follows:",
+      "resHeader": "Lands / Resources",
+      "p1": "The type of resources also differs, for example for wood:",
+      "woodHeader": "Wood",
+      "t1": "T1 (grey)",
+      "t2": "T2 (green)",
+      "t3": "T3 (blue)",
+      "wood": {
+        "forest1": "Birch",
+        "forest2": "Maple",
+        "forest3": "Oak",
+        "plains1": "Hornbeam",
+        "plains2": "Aspen",
+        "plains3": "Elm",
+        "mountains1": "Walnut",
+        "mountains2": "Larch",
+        "mountains3": "Pine",
+        "coast1": "Palm",
+        "coast2": "Cypress",
+        "coast3": "Driftwood"
+      }
+    },
+    "provinces": {
+      "title": "The Provinces",
+      "summary": "The Settler federates several Lands and becomes a Baron, with a county seat, market, tavern, library, vaults and garrison.",
+      "intro": "The Settler who decides to recruit 6 Lands then becomes the Baron of the Province. They are free to push away undesirable Lands. They set up a collective space in their county seat where the Province buildings are gathered:",
+      "items": {
+        "warehouse": {
+          "strong": "The warehouse:",
+          "text": "storage for the resources needed to build and maintain the common buildings."
+        },
+        "market": {
+          "strong": "The marketplace:",
+          "text": "each settler sends a villager to run a stall offering specific resources."
+        },
+        "library": {
+          "strong": "The library:",
+          "text": "to write and exchange crafting learning books."
+        },
+        "tavern": {
+          "strong": "The tavern:",
+          "text": "the prime spot for villager morale and for meeting explorers who open the way to wild lands to explore as a group."
+        },
+        "vault": {
+          "strong": "The vault room:",
+          "text": "for the Province finances."
+        },
+        "office": {
+          "strong": "The political office:",
+          "text": "to communicate with the other provinces and the region."
+        },
+        "training": {
+          "strong": "A training camp:",
+          "text": "to hone your skills through duels between friends."
+        },
+        "garrison": {
+          "strong": "The garrison:",
+          "text": "recruiting and equipping mercenaries to protect the county seat from enemy intrusions."
+        }
+      }
+    },
+    "multijoueurs": {
+      "title": "Multiplayer extension",
+      "summary": "Players organise the common buildings, trade, learning, defence and group explorations.",
+      "p0": "After building the tavern, an explorer offers a treasure map for sale; it grants access to the wild land for PvE.",
+      "wildHeader": "Wild lands / Resources",
+      "wild": {
+        "jungle": "Jungle",
+        "volcano": "Volcano",
+        "swamp": "Swamp",
+        "desert": "Desert",
+        "canyon": "Canyon"
+      },
+      "p1": "There you find complementary resources, essential for T3.",
+      "p2": "You also find mobs and bosses that loot components for offerings to the Gods: heart / claws / blood / eye / mane / carapace."
+    },
+    "regions": {
+      "title": "The Regions",
+      "summary": "Provinces unite to overthrow the NPC Lord and reach the open world of the Kingdom.",
+      "p0": "Through their political office, the Baron decides to join a Region and allies with 9 other Provinces.",
+      "p1": "The priority will be to overthrow the NPC Lord. A general mobilisation of the Settlers, good organisation and T3 equipment will be needed to face the Lord's mercenaries, handsomely paid with the tithes.",
+      "imgAlt": "Map of regions and PvP zones"
+    },
+    "extensionPvp": {
+      "title": "PvP extension",
+      "summary": "Castles, the Capital, Norse temples and Wild Caves become the great theatres of conflict.",
+      "p0": "The Region then discovers the open world of the Kingdom.",
+      "p1": "There you find the Capital, with two layouts to choose from:",
+      "items": {
+        "crown": {
+          "strong": "Crown City:",
+          "text": "on the surface, wealth, commercial activity and the royal guards."
+        },
+        "under": {
+          "strong": "Under City:",
+          "text": "underground, the catacombs, the black market and the brigands of the night."
+        }
+      },
+      "p2": "On the outskirts of the capital, the 8 Norse temples fight at a distance for possession of the relics — battles the Settlers can take part in.",
+      "imgAlt": "PvP panorama of the Kingdom",
+      "p3": "Also to be discovered are the Wild Caves that explorers find, the place to fight over the precious organs of the mobs.",
+      "p4": "And finally the epic castle-siege battles in the clashes between regions."
+    }
+  },
+  "craft": {
+    "title": "Construction, Crafting and Gear",
+    "construction": {
+      "title": "Construction and crafting",
+      "summary": "The village grows through buildings, workshops, repairs, construction levels and crafting progression.",
+      "p0": "Once the village location is set, you must lay the first stone. There are many building types, such as houses, fishing, hunting, the warehouse, farming, livestock, the mine, the woodcutter, the blacksmith, the alchemist, the kitchen, the divine hall… Buildings can be built from the basic materials of the Land. Only once a building is 100% complete is the structure usable. Weather and the wear of time damage buildings, which must be repaired regularly. Inside the buildings, you then build the workshops to craft tools or gear of the same level (grey).",
+      "p1": "The specific resources of the wild lands open a new chapter of crafting. Buildings and workshops must be rebuilt to reach the improved level (green).",
+      "p2": "It is then the workshops of the Lord's castle that allow crafting to be upgraded to the higher level (blue). The level of buildings plays a role in villager morale and their work performance.",
+      "p3": "At the start, the Settler knows rudimentary recipes, with a low learning level. They can learn others, either with the arrival of new villagers who master a trade, or with learning manuals they can buy or obtain in libraries.",
+      "p4": "There are three learning levels for crafting skills:",
+      "levels": {
+        "novice": { "strong": "Novice:", "text": "30% — the base level." },
+        "qualified": {
+          "strong": "Qualified:",
+          "text": "60% — the intermediate level allowing the trade to be passed on."
+        },
+        "expert": { "strong": "Expert:", "text": "90% — optimal crafting level." }
+      }
+    },
+    "crafting": {
+      "title": "Crafting mechanics",
+      "summary": "Automatic or manual crafting depends on recipes, mastery and specialty mini-games.",
+      "p0": "A learned crafting skill has a base creation percentage of 30%.",
+      "p1": "This value determines the durability or performance of the crafted item.",
+      "p2": "If they do not know the recipe, they can use a manual or accompany a qualified crafter to acquire the skill.",
+      "p3": "The player can also improve their skill level by activating manual crafting (as a mini-game). If the percentage obtained is better, it becomes the new reference.",
+      "p4": "Otherwise, the item is crafted automatically with the skill's percentage.",
+      "p5": "Here are a few examples:",
+      "selectorLabel": "Choose a trade:",
+      "cook": {
+        "label": "Cook",
+        "i0": "Take the example of a cook at 42% for the campfire grill:",
+        "i1": "Automatically, they can cook a grilled rabbit leg (T1) with 2.5 days of shelf life instead of 6 days.",
+        "i2": "Manually, they must master the cooking temperature to try to improve their 42% mastery."
+      },
+      "leather": {
+        "label": "Leatherworker",
+        "i0": "Take the example of a tanner at 65% for bag leatherwork:",
+        "i1": "Automatically, they can make a leather satchel (T2) with 65 uses instead of 100.",
+        "i2": "Manually, they must master cutting and sewing to improve their 65% mastery.",
+        "i3": "They can also be accompanied by an apprentice (NPC or player) to teach good practices. The apprentice gains a mastery of 65-30 = 35%.",
+        "i4": "They can write a learning manual in a library to pass on or sell."
+      },
+      "smith": {
+        "label": "Blacksmith",
+        "i0": "Take the example of an assembler blacksmith at 82% for tool making:",
+        "i1": "Automatically, they can make an iron pickaxe (T3) with 82 uses instead of 100.",
+        "i2": "Manually, they must master three skills (furnace, forging and heat treatment) to improve their mastery."
+      },
+      "gear": {
+        "label": "Gear",
+        "i0": "For gear, the impact of mastery is not on durability, but on effectiveness.",
+        "i1": "So a T3 weapon crafted at 30% mastery deals as much damage as a T1 weapon at 90%."
+      }
+    },
+    "stuff": {
+      "title": "Gear and damage types",
+      "summary": "Gear is personal: weapons, armour, damage elements and divine blessings depending on the biome.",
+      "p0": "Gear is a player's bespoke weapons and armour. Only the player and their villagers can craft it. A third party can only recover its components.",
+      "p1": "Each biome has its specific gear, without preventing access to the other equipment; the base resources will simply be far more common there.",
+      "p2": "For example:",
+      "dmg": {
+        "mountains": "A mountain dweller will easily find fur to craft reinforced leather armour that protects against cold damage, and their hammer made from Pine will deal damage with the cold modifier.",
+        "forest": "A forest dweller will be tied to physical damage.",
+        "plains": "A plains dweller will be tied to heat.",
+        "coast": "A coast dweller will be tied to wind."
+      },
+      "p3": "Each biome also has its own weapon set.",
+      "selectorLabel": "Select a weapon type / biome:",
+      "weapons": {
+        "javelin": {
+          "label": "Light javelin — Forest physical",
+          "style": "Playstyle: Assassin / Mobile hunter.",
+          "s0n": "Tracking Thorn",
+          "s0e": "Piercing shot that marks enemies",
+          "s1n": "Hunting Roots",
+          "s1e": "Immobilisation by roots",
+          "s2n": "Protective Canopy",
+          "s2e": "Damage reduction + camouflage",
+          "s3n": "Sylvan Leap",
+          "s3e": "Dash to a tree or marked target",
+          "s4n": "Hunt of the Great Stag",
+          "s4e": "Spiritual charge causing fear and heavy damage"
+        },
+        "axe": {
+          "label": "Heavy throwing axe — Mountain cold",
+          "style": "Playstyle: Bruiser / Tank.",
+          "s0n": "Glacier Axe",
+          "s0e": "Heavy throw with icy slow",
+          "s1n": "Avalanche Fissure",
+          "s1e": "Knockback and slippery terrain",
+          "s2n": "White Mammoth Hide",
+          "s2e": "Huge defensive shield",
+          "s3n": "Call of the Summit",
+          "s3e": "Pulls enemies in with the axe",
+          "s4n": "Wrath of the Avalanche",
+          "s4e": "Giant avalanche with a final stun"
+        },
+        "steppe": {
+          "label": "Steppe javelin — Plains fire",
+          "style": "Playstyle: Aggressive fighter / Mobile.",
+          "s0n": "Incandescent Spear",
+          "s0e": "Fire explosion + burn",
+          "s1n": "Solar Impalement",
+          "s1e": "Charge with stun",
+          "s2n": "Circle of the Nomads",
+          "s2e": "Projectile deflection",
+          "s3n": "Run of the Tall Grass",
+          "s3e": "Sprint leaving a trail of fire",
+          "s4n": "Storm of the Burning Steppe",
+          "s4e": "Blazing storm controlling the area"
+        },
+        "harpoon": {
+          "label": "Throwing harpoon — Coast wind",
+          "style": "Playstyle: Controller / Offensive support.",
+          "s0n": "Tide Harpoon",
+          "s0e": "Light pull + wet mark",
+          "s1n": "Rising Wave",
+          "s1e": "Lift and knockback",
+          "s2n": "Protective Breeze",
+          "s2e": "Reduction of incoming projectiles",
+          "s3n": "Kraken Grapple",
+          "s3e": "Movement by anchoring",
+          "s4n": "Leviathan Maelstrom",
+          "s4e": "Sea vortex sucking in enemies"
+        }
+      },
+      "p4": "Each piece of gear can receive a blessing granting passive bonuses depending on the chosen deity."
+    }
+  },
+  "eco": {
+    "title": "Management, Economy and Religion",
+    "gestion": {
+      "title": "Management and Economy",
+      "summary": "NPCs, trades, morale, fatigue, workshop chests, foremen, merchants, gold and tithes.",
+      "p0": "Each NPC has a base trade, and can take up an apprenticeship with the Player either by improving their original trade or by learning a new skill.",
+      "p1": "The Player assigns tasks to NPCs over different time slots; the rest of the time, the NPC tends to their family and home, rests and prays.",
+      "p2": "Their morale is determined by their fatigue, comfort, family status and divine factors; it conditions their performance, i.e. their effective working hours relative to their time slot.",
+      "p3": "Workshop chests are used to restock the raw materials needed for crafting. Logistics missions allow these chests to be restocked or emptied.",
+      "p4": "A foreman's presence in a workshop to oversee the workbenches improves worker performance, but overusing them lowers morale. As construction levels rise (T1 → T3), morale is reinforced. The Player provides a chest with gold, in the town hall, available to foremen to distribute.",
+      "p5": "Travelling merchants pass through the village regularly to offer resources and manuals and to buy crafted production for gold.",
+      "p6": "The Capital, the Region and the Provinces levy cascading tithes. Bad payers expose themselves to reprisals led by tax collectors and their armed troops."
+    },
+    "comptoirs": {
+      "title": "Trading posts, dens and trade routes",
+      "summary": "Shops, markets, workshops, docks, convoys and trade routes exposed to banditry.",
+      "p0": "By joining the Province, the Region and then the Capital, the player can take over active commercial sites by paying rent to the local authority.",
+      "p1": "They may, for example, have a shop in the county seat or a workshop in the lord's castle. In the Capital, with enough Reputation, they can take possession of a market, a tavern, a carter, a dock, a spy den…",
+      "p2": "In every case, they must send their NPCs to run the establishment; the NPCs are self-sufficient for lodging and food. The more staff there is, the higher the profitability.",
+      "p3": "The crux of the matter is therefore the availability of establishments and, above all, a sufficient number of villagers.",
+      "p4": "Another way to earn gold is to deliver resources at a fixed price to official warehouses, or to put items (except gear) up for sale on markets open to all.",
+      "p5": "To bring resources to their destination, you need a cart with its team, or a barge by sea. Each delivery must be registered in the departure logistics office to lock in the sale price and quantities. But these scheduled trade routes are exposed to espionage and therefore to banditry."
+    },
+    "capitale": {
+      "title": "The Capital",
+      "summary": "Choice between Royalists on the surface and Insurgents underground, with reputation and scheduled conflicts.",
+      "p0": "On arriving in the Capital, the player must choose their path: Royalist on the surface or Insurgent underground; depending on their actions for one camp or the other, they earn reputation.",
+      "items": {
+        "royalists": {
+          "strong": "Royalists:",
+          "text": "a faction loyal to the crown, defending order, the capital and established power; they control the surface, are tied to the King, run the official economy (taxes, trade), enjoy easier access to the capital's structures, with the Royal Guard under the authority of High Marshal Valen."
+        },
+        "insurgents": {
+          "strong": "Insurgents:",
+          "text": "they control the underground, sabotage the surface, run a parallel economy (black market, looting), with riskier / freer gameplay; the Black Hands under the authority of Redbeard."
+        }
+      },
+      "p1": "Regularly, and pre-emptively, each faction attacks the other on its own ground. Players can take part in these scheduled events, always in the spirit of balanced combat, and gain Reputation.",
+      "p2": "Depending on the depth of the offensive, commercial activity is disrupted, and the resulting damage requires funds for repairs.",
+      "p3": "The King uses the tithes to fund surface investments, and the Insurgents take a percentage on the hiring of mercenaries."
+    },
+    "religion": {
+      "title": "Religion and Divinity",
+      "summary": "Divine halls, offerings, blessings, sanctuaries and the influence of the Norse gods.",
+      "p0": "Religion plays a major role in the relational balance within the Kingdom and brings its worshippers varied and significant benefits. There are nine worlds in Norse mythology, held in the branches and roots of the giant tree Yggdrasil; eight are available to each Settler: Vanaheim, Alfheim, Midgard, Svartalfheim, Jötunheim, Muspellheim, Niflheim, Helheim, and Asgard in the Capital.",
+      "p1": "The choice must be made when building the Divine Hall, and it brings benefits to the Land for its farming, crafting or population depending on the chosen God. It also acts as a catalyst to attract new villagers. The player can then build mini-sanctuaries outside the PvP zone that allow them to return to their grave.",
+      "p2": "Each deity requires specific offerings, based on boss organs, to grant blessings on the player's gear. Within the same Province, players can benefit from the Divine Halls of the other lands if they follow different religions.",
+      "p3": "For example, a blessing on boots granting stability requires:",
+      "offering": {
+        "i0": "2 claws + 1 boss carapace;",
+        "i1": "1 specific T3 resource from each biome (Forest, Plains, Mountains, Coast);",
+        "i2": "in an acacia urn (wood harvested in a desert wild land)."
+      }
+    }
+  },
+  "pvp": {
+    "title": "PvP",
+    "religions": {
+      "title": "Religion Battles",
+      "summary": "Temples defend relics, treasures and offerings during balanced events.",
+      "p0": "Each Deity is represented by a temple in the Kingdom; it is in fact a stronghold protecting the offerings, treasures and even a relic, which grants a boost to the relevant worshippers.",
+      "p1": "Just like the faction clashes in the Capital, events are scheduled regularly and religious fanatics storm a more opulent temple. Players of the same religion can take part, always in the spirit of balanced combat, and raise their level of Faith.",
+      "p2": "This Faith, brought back to their own Divine Hall, spontaneously attracts new villagers."
+    },
+    "donjon": {
+      "title": "Open-world Dungeon",
+      "summary": "Group dungeons with a PvP arena at the entrance, then PvE exploration against rare bosses.",
+      "p0": "In the taverns of the Capital, many explorers offer maps to dungeons located in the Kingdom, with teleportation to the site. The team leader can select dungeons based on the size of their group: 7, 14 or 21 members.",
+      "p1": "Dungeons generally have 3 entrances, and the first room is a 3-way PvP arena. The last survivor can activate an altar of Odin that lets the fallen recover their graves and continue the adventure.",
+      "p2": "The rest of the dungeon is full PvE without disruption, with a random map. Bosses are hard to bring down but reward heavily in organs for offerings.",
+      "p3": "The number of dungeons is limited per group and per day to avoid grinding."
+    },
+    "equilibres": {
+      "title": "Balanced combat",
+      "summary": "Structured PvP: forts, trade routes, the Capital, temples and dungeons with controlled numbers.",
+      "p0": "The first objective is to avoid zerg phenomena or wild PK.",
+      "p1": "PvP is structured and organised according to the following patterns:",
+      "head": {
+        "fight": "Confrontation",
+        "trigger": "Trigger",
+        "numbers": "Numbers",
+        "stake": "Stake"
+      },
+      "rows": {
+        "fort": {
+          "fight": "Region fort attack",
+          "trigger": "Launched by the Lord (player)",
+          "stake": "Gold in the throne room"
+        },
+        "trade": {
+          "fight": "Trade route skirmish",
+          "trigger": "Launched by a player after espionage",
+          "numbers": "Attackers = convoy escort count",
+          "stake": "Transportable convoy resources"
+        },
+        "capital": {
+          "fight": "Royalists vs Insurgents (Capital)",
+          "trigger": "Regular event",
+          "numbers": "30 vs 30 NPCs",
+          "stake": "Damage to infrastructure"
+        },
+        "religion": {
+          "fight": "Religion battles",
+          "trigger": "Regular event",
+          "numbers": "30 vs 30 NPCs",
+          "stake": "Relics and treasures"
+        },
+        "dungeon": {
+          "fight": "Open-world Dungeon",
+          "trigger": "Map purchase",
+          "stake": "PvE Boss"
+        }
+      },
+      "p2": "Forces are balanced in number. The mechanic is as follows: at the start, all belligerent groups are made up of NPCs, and the player can substitute for one of them as long as they belong to the right region, faction, religion… The number therefore always stays the same.",
+      "p3": "In addition, a Lord can activate a protection bubble on the Region fort to avoid relentless rushes from other Lords; but this protection is paid for with the gold collected from the Provinces' tithes."
+    }
+  }
+}
