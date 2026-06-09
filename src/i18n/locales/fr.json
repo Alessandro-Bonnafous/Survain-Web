@@ -30,7 +30,22 @@
     },
     "community": {
       "title": "Communauté",
-      "wip": "L'espace communautaire arrive prochainement."
+      "discord": {
+        "title": "Discord officiel",
+        "cta": "Rejoindre le Discord"
+      },
+      "music": {
+        "title": "Musiques"
+      },
+      "soon": {
+        "title": "À venir",
+        "news": "Actualités",
+        "forums": "Forums",
+        "events": "Événements",
+        "hallOfFame": "Hall of Fame",
+        "support": "Support",
+        "partners": "Partenaires"
+      }
     },
     "tools": {
       "title": "Outils",

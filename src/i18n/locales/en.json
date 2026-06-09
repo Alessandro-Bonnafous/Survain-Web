@@ -30,7 +30,22 @@
     },
     "community": {
       "title": "Community",
-      "wip": "The community space is coming soon."
+      "discord": {
+        "title": "Official Discord",
+        "cta": "Join the Discord"
+      },
+      "music": {
+        "title": "Music"
+      },
+      "soon": {
+        "title": "Coming soon",
+        "news": "News",
+        "forums": "Forums",
+        "events": "Events",
+        "hallOfFame": "Hall of Fame",
+        "support": "Support",
+        "partners": "Partners"
+      }
     },
     "tools": {
       "title": "Tools",
