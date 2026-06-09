@@ -17,9 +17,9 @@
 
 <script setup lang="ts">
 import { ref } from 'vue'
-import type { SelectorOption } from '@/content/gameplay/types'
+import type { ResolvedSelectorOption } from '@/content/gameplay/types'
 
-defineProps<{ label: string; options: SelectorOption[] }>()
+defineProps<{ label: string; options: ResolvedSelectorOption[] }>()
 
 const selected = ref(0)
 </script>

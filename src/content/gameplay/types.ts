@@ -1,56 +1,65 @@
 /**
  * Schéma de contenu de la page Gameplay.
  *
- * Le contenu est modélisé en TypeScript typé (et non en markdown) car il
- * contient des tableaux et des sélecteurs interactifs. Une version par locale
- * (`fr.ts`, `en.ts`) partage ce même schéma ; un test de parité garantit que
- * les deux restent structurellement alignées.
+ * Source unique : la **structure** (catégories → chapitres → blocs) vit dans
+ * `structure.ts`, indépendante de la langue. Tout texte traduisible y est
+ * référencé par une **clé i18n** (résolue via `t()` dans les composants), et le
+ * texte vit dans `locales/<lang>/gameplay.json`.
  *
- * La présentation est volontairement neutre (cf. composants génériques) : la
- * maquette de Thierry ne touchera que la couche d'affichage, pas ces données.
+ * Les **valeurs invariantes** (pourcentages, effectifs…) — qui doivent être
+ * strictement identiques entre locales car elles servent de référence au jeu —
+ * sont écrites une seule fois, en littéral, directement dans la structure.
+ *
+ * La présentation est volontairement neutre : la maquette de Thierry ne
+ * touchera que la couche d'affichage, pas ces données.
  */
 
-/** Élément d'une liste à puces (avec une amorce optionnelle en gras). */
-export interface ListItem {
-  /** Amorce mise en gras (ex. « L'entrepôt : »). */
-  strong?: string
-  text: string
-}
+/**
+ * Cellule de tableau :
+ * - `string` → valeur littérale **invariante** (ex. `'25%'`), partagée par
+ *   toutes les locales ;
+ * - `{ key }` → texte **traduisible** (ex. un nom de biome), résolu via i18n.
+ */
+export type Cell = string | { key: string }
 
-/** Image de contenu (chemin résolu côté composant via import d'asset). */
-export interface ContentImage {
-  /** Identifiant logique de l'image (mappé vers un asset, cf. `images.ts`). */
-  id: string
-  alt: string
+/** Élément de liste : amorce optionnelle en gras + texte, tous deux traduits. */
+export interface ListItemRef {
+  strongKey?: string
+  textKey: string
 }
 
 /** Bloc de contenu rendu par `ContentBlock.vue`. */
 export type Block =
-  | { kind: 'paragraph'; text: string }
-  | { kind: 'list'; items: ListItem[] }
-  | { kind: 'table'; headers: string[]; rows: string[][] }
-  | { kind: 'image'; image: ContentImage }
-  | { kind: 'selector'; label: string; options: SelectorOption[] }
+  | { kind: 'paragraph'; textKey: string }
+  | { kind: 'list'; items: ListItemRef[] }
+  | { kind: 'table'; headerKeys: string[]; rows: Cell[][] }
+  | { kind: 'image'; imageId: string; altKey: string }
+  | { kind: 'selector'; labelKey: string; options: SelectorOptionRef[] }
 
-/** Une option d'un sélecteur (ex. un métier, un set d'arme par biome). */
-export interface SelectorOption {
+/** Option d'un sélecteur (label traduit + blocs). */
+export interface SelectorOptionRef {
+  labelKey: string
+  blocks: Block[]
+}
+
+/** Option résolue (label déjà traduit) transmise au slot du sélecteur. */
+export interface ResolvedSelectorOption {
   label: string
   blocks: Block[]
 }
 
-/** Un chapitre d'une catégorie (carte + contenu détaillé). */
+/** Chapitre d'une catégorie. */
 export interface Chapter {
   id: string
-  title: string
-  /** Résumé court affiché en tête de chapitre. */
-  summary: string
+  titleKey: string
+  summaryKey: string
   blocks: Block[]
 }
 
-/** Une des grandes catégories de gameplay. */
+/** Grande catégorie de gameplay. */
 export interface Category {
   id: string
-  title: string
+  titleKey: string
   chapters: Chapter[]
 }
 

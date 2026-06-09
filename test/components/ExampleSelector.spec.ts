@@ -1,11 +1,11 @@
 import { describe, expect, it } from 'vitest'
 import { mount } from '@vue/test-utils'
 import ExampleSelector from '@/components/gameplay/ExampleSelector.vue'
-import type { SelectorOption } from '@/content/gameplay/types'
+import type { ResolvedSelectorOption } from '@/content/gameplay/types'
 
-const options: SelectorOption[] = [
-  { label: 'Alpha', blocks: [{ kind: 'paragraph', text: 'contenu-alpha' }] },
-  { label: 'Beta', blocks: [{ kind: 'paragraph', text: 'contenu-beta' }] },
+const options: ResolvedSelectorOption[] = [
+  { label: 'Alpha', blocks: [{ kind: 'paragraph', textKey: 'a' }] },
+  { label: 'Beta', blocks: [{ kind: 'paragraph', textKey: 'b' }] },
 ]
 
 function mountSelector() {
@@ -13,7 +13,7 @@ function mountSelector() {
     props: { label: 'Choix', options },
     slots: {
       // Slot scopé : on rend un marqueur basé sur l'option sélectionnée.
-      default: (props: { option: SelectorOption }) => props.option.label,
+      default: (props: { option: ResolvedSelectorOption }) => props.option.label,
     },
   })
 }

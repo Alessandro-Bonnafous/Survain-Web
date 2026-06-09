@@ -13,7 +13,7 @@
         :aria-selected="i === active"
         @click="active = i"
       >
-        {{ category.title }}
+        {{ t(category.titleKey) }}
       </button>
     </div>
 
@@ -28,16 +28,15 @@
 </template>
 
 <script setup lang="ts">
-import { computed, ref } from 'vue'
+import { ref } from 'vue'
 import { useI18n } from 'vue-i18n'
-import { getGameplayContent } from '@/content/gameplay'
+import { gameplayStructure } from '@/content/gameplay'
 import GameplayChapter from '@/components/gameplay/GameplayChapter.vue'
 
-const { t, locale } = useI18n()
+const { t } = useI18n()
 
-// Le contenu suit la locale active ; les catégories restent les mêmes (parité
-// FR/EN), donc l'onglet sélectionné reste valide après un changement de langue.
-const content = computed(() => getGameplayContent(locale.value))
+// La structure est unique ; seuls les libellés suivent la locale (via t()).
+const content = gameplayStructure
 const active = ref(0)
 </script>
 

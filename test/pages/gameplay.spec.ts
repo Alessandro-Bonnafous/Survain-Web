@@ -1,13 +1,10 @@
 import { describe, expect, it } from 'vitest'
 import { mount } from '@vue/test-utils'
-import { createI18n } from 'vue-i18n'
-import fr from '@/i18n/locales/fr.json'
-import en from '@/i18n/locales/en.json'
+import { createTestI18n } from '../helpers/i18n'
 import Gameplay from '@/pages/gameplay.vue'
 
 function mountGameplay(locale: 'fr' | 'en' = 'fr') {
-  const i18n = createI18n({ legacy: false, locale, fallbackLocale: 'en', messages: { fr, en } })
-  return mount(Gameplay, { global: { plugins: [i18n] } })
+  return mount(Gameplay, { global: { plugins: [createTestI18n(locale)] } })
 }
 
 describe('page Gameplay', () => {

@@ -1,31 +1,41 @@
 <template>
-  <p v-if="block.kind === 'paragraph'" class="content-block__paragraph">{{ block.text }}</p>
+  <p v-if="block.kind === 'paragraph'" class="content-block__paragraph">{{ t(block.textKey) }}</p>
 
   <ul v-else-if="block.kind === 'list'" class="content-block__list">
     <li v-for="(item, i) in block.items" :key="i">
-      <strong v-if="item.strong">{{ item.strong }}</strong>
-      {{ item.text }}
+      <strong v-if="item.strongKey">{{ t(item.strongKey) }}</strong>
+      {{ t(item.textKey) }}
     </li>
   </ul>
 
-  <InfoTable v-else-if="block.kind === 'table'" :headers="block.headers" :rows="block.rows" />
+  <InfoTable
+    v-else-if="block.kind === 'table'"
+    :headers="block.headerKeys.map((key) => t(key))"
+    :rows="block.rows.map(resolveRow)"
+  />
 
   <figure v-else-if="block.kind === 'image'" class="content-block__figure">
-    <img :src="imageSrc(block.image.id)" :alt="block.image.alt" loading="lazy" />
+    <img :src="imageSrc(block.imageId)" :alt="t(block.altKey)" loading="lazy" />
   </figure>
 
   <ExampleSelector
     v-else-if="block.kind === 'selector'"
     v-slot="{ option }"
-    :label="block.label"
-    :options="block.options"
+    :label="t(block.labelKey)"
+    :options="resolveOptions(block.options)"
   >
     <ContentBlock v-for="(child, i) in option.blocks" :key="i" :block="child" />
   </ExampleSelector>
 </template>
 
 <script setup lang="ts">
-import type { Block } from '@/content/gameplay/types'
+import { useI18n } from 'vue-i18n'
+import type {
+  Block,
+  Cell,
+  ResolvedSelectorOption,
+  SelectorOptionRef,
+} from '@/content/gameplay/types'
 import { gameplayImages } from '@/content/gameplay/images'
 import InfoTable from './InfoTable.vue'
 import ExampleSelector from './ExampleSelector.vue'
@@ -34,6 +44,21 @@ import ExampleSelector from './ExampleSelector.vue'
 defineOptions({ name: 'ContentBlock' })
 
 defineProps<{ block: Block }>()
+
+const { t } = useI18n()
+
+/** Une cellule littérale est rendue telle quelle ; une clé est traduite. */
+function resolveCell(cell: Cell): string {
+  return typeof cell === 'string' ? cell : t(cell.key)
+}
+
+function resolveRow(row: Cell[]): string[] {
+  return row.map(resolveCell)
+}
+
+function resolveOptions(options: SelectorOptionRef[]): ResolvedSelectorOption[] {
+  return options.map((option) => ({ label: t(option.labelKey), blocks: option.blocks }))
+}
 
 function imageSrc(id: string): string {
   return gameplayImages[id] ?? ''

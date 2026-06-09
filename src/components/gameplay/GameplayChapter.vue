@@ -1,16 +1,19 @@
 <template>
   <article class="gameplay-chapter">
-    <h3 class="gameplay-chapter__title">{{ chapter.title }}</h3>
-    <p class="gameplay-chapter__summary">{{ chapter.summary }}</p>
+    <h3 class="gameplay-chapter__title">{{ t(chapter.titleKey) }}</h3>
+    <p class="gameplay-chapter__summary">{{ t(chapter.summaryKey) }}</p>
     <ContentBlock v-for="(block, i) in chapter.blocks" :key="i" :block="block" />
   </article>
 </template>
 
 <script setup lang="ts">
+import { useI18n } from 'vue-i18n'
 import type { Chapter } from '@/content/gameplay/types'
 import ContentBlock from './ContentBlock.vue'
 
 defineProps<{ chapter: Chapter }>()
+
+const { t } = useI18n()
 </script>
 
 <style scoped>
