@@ -72,6 +72,36 @@ function tv(value: string): string {
   return te(key) ? t(key) : value
 }
 
+/**
+ * Traduit un nom d'item (ressource, bâtiment, arme, armure) via le lexique
+ * `tools.items`. Même logique que `tv` mais sur un namespace distinct (évite
+ * les collisions, ex. « Cuisine » catégorie vs bâtiment). Repli FR si absent.
+ */
+function tvi(value: string): string {
+  if (locale.value === 'fr') return value
+  const key = `tools.items.${value}`
+  return te(key) ? t(key) : value
+}
+
+/**
+ * Traduit une cellule de coût (« 9 Mangrove », « 30 Charme / + 2 Aubépine
+ * (Plaines bonus) ») : quantités conservées, noms et biomes bonus traduits via
+ * `tvi`. Le FR reste la valeur brute.
+ */
+function translateCost(raw: string): string {
+  if (locale.value === 'fr' || !raw || raw === '-') return raw
+  return raw
+    .split(' / ')
+    .map((segment) => {
+      const m = segment.match(/^(\+\s*)?(\d+)\s+(.+?)(?:\s*\(([^)]+?)\s+bonus\))?$/)
+      if (!m) return segment
+      const [, plus, qty, name, bonus] = m
+      const base = `${plus ? '+ ' : ''}${qty} ${tvi(name.trim())}`
+      return bonus ? `${base} (${tvi(bonus.trim())} bonus)` : base
+    })
+    .join(' / ')
+}
+
 const SECTIONS = ['recolte', 'constructions', 'processing', 'weapons', 'armors'] as const
 type Section = (typeof SECTIONS)[number]
 
@@ -104,10 +134,10 @@ const table = computed<TableData>(() => {
         rows: resourcesOf(biomeId.value).map((r) => [
           tv(r.outil),
           tv(r.type),
-          r.t1,
-          r.t2,
-          r.t3,
-          r.annexes,
+          tvi(r.t1),
+          tvi(r.t2),
+          tvi(r.t3),
+          tvi(r.annexes),
         ]),
       }
     }
@@ -115,7 +145,7 @@ const table = computed<TableData>(() => {
       const h = 'tools.headers.construction'
       return {
         headers: [t(`${h}.building`), t(`${h}.t1`), t(`${h}.t2`), t(`${h}.t3`)],
-        rows: constructions.map((c) => [tv(c.Batiments), c.T1, c.T2, c.T3]),
+        rows: constructions.map((c) => [tv(c.Batiments), tvi(c.T1), tvi(c.T2), tvi(c.T3)]),
       }
     }
     case 'processing': {
@@ -124,9 +154,9 @@ const table = computed<TableData>(() => {
         headers: [t(`${h}.category`), t(`${h}.t1`), t(`${h}.t2`), t(`${h}.t3`)],
         rows: processing.map((p) => [
           tv(p.Catégorie),
-          p['T1 - Hutte Craft'],
-          p['T2 - Maison Artisanale'],
-          p['T3 - Hall des Artisans'],
+          tvi(p['T1 - Hutte Craft']),
+          tvi(p['T2 - Maison Artisanale']),
+          tvi(p['T3 - Hall des Artisans']),
         ]),
       }
     }
@@ -147,13 +177,13 @@ const table = computed<TableData>(() => {
         rows: weaponsOf(biomeId.value, tier.value).map((w) => [
           tv(w.Catégorie),
           tv(w.Rôle),
-          w.Arme,
+          tvi(w.Arme),
           w['Qté Totale'],
-          w['Bois craft'],
-          w['Minerai craft'],
-          w['Fibres craft'],
-          w['Ressources marines craft'],
-          w['Ressources craft'],
+          translateCost(w['Bois craft']),
+          translateCost(w['Minerai craft']),
+          translateCost(w['Fibres craft']),
+          translateCost(w['Ressources marines craft']),
+          translateCost(w['Ressources craft']),
         ]),
       }
     }
@@ -175,14 +205,14 @@ const table = computed<TableData>(() => {
         rows: armorsOf(biomeId.value, tier.value).map((a) => [
           tv(a.Type),
           tv(a.Résistance),
-          a.Armure,
+          tvi(a.Armure),
           a['Qté base'],
           a['Qté biome supplémentaire'],
-          a['Bois craft'],
-          a['Minerai craft'],
-          a['Fibres craft'],
-          a['Marines craft'],
-          a['Animal craft'],
+          translateCost(a['Bois craft']),
+          translateCost(a['Minerai craft']),
+          translateCost(a['Fibres craft']),
+          translateCost(a['Marines craft']),
+          translateCost(a['Animal craft']),
         ]),
       }
     }

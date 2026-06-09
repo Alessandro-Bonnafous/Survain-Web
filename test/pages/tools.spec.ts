@@ -44,4 +44,11 @@ describe('page Tools', () => {
     expect(en.text()).toContain('Axe')
     expect(en.text()).not.toContain('Hache')
   })
+
+  it('traduit les noms d’items (récolte : Bouleau → Birch)', () => {
+    expect(mountTools('fr').text()).toContain('Bouleau')
+    const en = mountTools('en')
+    expect(en.text()).toContain('Birch')
+    expect(en.text()).not.toContain('Bouleau')
+  })
 })

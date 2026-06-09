@@ -3,6 +3,7 @@ import fr from '@/i18n/locales/fr.json'
 import en from '@/i18n/locales/en.json'
 import frGameplay from '@/i18n/locales/fr/gameplay.json'
 import enGameplay from '@/i18n/locales/en/gameplay.json'
+import enToolsItems from '@/i18n/locales/en/tools-items.json'
 
 /**
  * Crée une instance i18n de test avec les mêmes messages fusionnés que
@@ -16,7 +17,7 @@ export function createTestI18n(locale: 'fr' | 'en' = 'fr') {
     fallbackLocale: 'en',
     messages: {
       fr: { ...fr, gameplay: frGameplay },
-      en: { ...en, gameplay: enGameplay },
+      en: { ...en, gameplay: enGameplay, tools: { ...en.tools, items: enToolsItems } },
     },
   })
 }
