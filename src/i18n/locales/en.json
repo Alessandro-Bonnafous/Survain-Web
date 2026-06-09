@@ -11,7 +11,18 @@
     "trailer": "Trailer"
   },
   "home": {
-    "intro": "Official site of SURVAIN — survival and city-builder in a Norse mythology universe."
+    "presentation": {
+      "title": "Presentation",
+      "paragraphs": [
+        "Dive into the merciless world of SURVAIN, an MMORPG of survival and strategic conquest inspired by Norse mythology. In a kingdom torn apart by war, players take on the role of freed settlers, determined to build villages, forge alliances and prevail against fearsome enemies – human or divine.",
+        "With a unique progression system, SURVAIN takes you from solo survival to massive PvP battles, where every decision – whether uniting provinces or overthrowing the Lords – shapes the fate of the world. Thanks to innovative balancing mechanics and an economy regulated by the gods and the rulers, the game delivers an immersive, balanced experience that rewards strategy, loyalty and daring.",
+        "Join SURVAIN, where building a community and conquering a kingdom collide with the test of survival."
+      ]
+    },
+    "cta": {
+      "trailer": "Watch the trailer",
+      "discord": "Join the Discord"
+    }
   },
   "pages": {
     "gameplay": {

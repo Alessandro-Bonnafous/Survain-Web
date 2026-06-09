@@ -5,7 +5,7 @@
         <RouterLink class="app-nav__link" :to="link.to">{{ t(`nav.${link.key}`) }}</RouterLink>
       </li>
       <li>
-        <a class="app-nav__link" :href="TRAILER_URL" target="_blank" rel="noopener">
+        <a class="app-nav__link" :href="EXTERNAL_LINKS.trailer" target="_blank" rel="noopener">
           {{ t('nav.trailer') }}
         </a>
       </li>
@@ -17,11 +17,9 @@
 <script setup lang="ts">
 import { useI18n } from 'vue-i18n'
 import LocaleSwitcher from './LocaleSwitcher.vue'
+import { EXTERNAL_LINKS } from '@/config/links'
 
 const { t } = useI18n()
-
-/** Lien externe vers le trailer YouTube (repris du site legacy). */
-const TRAILER_URL = 'https://www.youtube.com/watch?v=496Khyp_ExY'
 
 const links = [
   { to: '/', key: 'home' },
