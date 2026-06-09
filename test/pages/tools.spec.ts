@@ -37,4 +37,18 @@ describe('page Tools', () => {
     const wrapper = mountTools('en')
     expect(wrapper.findAll('.tools__tab')[0].text()).toBe('Gathering')
   })
+
+  it('traduit les valeurs catégorielles (FR brut, EN traduit)', () => {
+    expect(mountTools('fr').text()).toContain('Hache')
+    const en = mountTools('en')
+    expect(en.text()).toContain('Axe')
+    expect(en.text()).not.toContain('Hache')
+  })
+
+  it('traduit les noms d’items (récolte : Bouleau → Birch)', () => {
+    expect(mountTools('fr').text()).toContain('Bouleau')
+    const en = mountTools('en')
+    expect(en.text()).toContain('Birch')
+    expect(en.text()).not.toContain('Bouleau')
+  })
 })
