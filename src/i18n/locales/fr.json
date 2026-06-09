@@ -6,9 +6,30 @@
   "nav": {
     "home": "Accueil",
     "gameplay": "Gameplay",
-    "community": "Communauté"
+    "community": "Communauté",
+    "tools": "Outils",
+    "trailer": "Trailer"
   },
-  "coming_soon": "Le site officiel est en cours de construction",
+  "home": {
+    "intro": "Site officiel du jeu SURVAIN — survie et city-builder dans un univers de mythologie nordique."
+  },
+  "pages": {
+    "gameplay": {
+      "title": "Gameplay",
+      "wip": "Le contenu gameplay arrive prochainement."
+    },
+    "community": {
+      "title": "Communauté",
+      "wip": "L'espace communautaire arrive prochainement."
+    },
+    "tools": {
+      "title": "Outils",
+      "wip": "Les outils (arbre de craft) arrivent prochainement."
+    }
+  },
+  "footer": {
+    "rights": "© 2026 SURVAIN. Tous droits réservés."
+  },
   "lang": {
     "fr": "Français",
     "en": "English"

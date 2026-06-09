@@ -6,9 +6,30 @@
   "nav": {
     "home": "Home",
     "gameplay": "Gameplay",
-    "community": "Community"
+    "community": "Community",
+    "tools": "Tools",
+    "trailer": "Trailer"
   },
-  "coming_soon": "The official site is being built",
+  "home": {
+    "intro": "Official site of SURVAIN — survival and city-builder in a Norse mythology universe."
+  },
+  "pages": {
+    "gameplay": {
+      "title": "Gameplay",
+      "wip": "Gameplay content is coming soon."
+    },
+    "community": {
+      "title": "Community",
+      "wip": "The community space is coming soon."
+    },
+    "tools": {
+      "title": "Tools",
+      "wip": "The tools (craft tree) are coming soon."
+    }
+  },
+  "footer": {
+    "rights": "© 2026 SURVAIN. All rights reserved."
+  },
   "lang": {
     "fr": "Français",
     "en": "English"
