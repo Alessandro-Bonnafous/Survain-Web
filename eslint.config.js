@@ -7,7 +7,7 @@ import prettier from '@vue/eslint-config-prettier'
 export default tseslint.config(
   {
     name: 'app/ignores',
-    ignores: ['dist/**', 'node_modules/**', '.vite/**', '**/*.d.ts'],
+    ignores: ['dist/**', 'node_modules/**', '.vite/**', 'coverage/**', '**/*.d.ts'],
   },
   eslint.configs.recommended,
   ...tseslint.configs.recommended,
@@ -30,6 +30,8 @@ export default tseslint.config(
       // Interdit console.* en prod : utiliser le composable useLog().
       'no-console': 'error',
       'vue/multi-word-component-names': 'off',
+      // Ordre imposé des blocs dans les SFC : template, puis script, puis style.
+      'vue/block-order': ['error', { order: ['template', 'script', 'style'] }],
     },
   },
   prettier,

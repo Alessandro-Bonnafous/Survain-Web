@@ -16,6 +16,9 @@
     "lint": "eslint .",
     "lint:fix": "eslint . --fix",
     "format": "prettier --write .",
+    "test": "vitest",
+    "test:run": "vitest run",
+    "coverage": "vitest run --coverage",
     "postinstall": "simple-git-hooks"
   },
   "simple-git-hooks": {
@@ -31,10 +34,13 @@
     "@intlify/unplugin-vue-i18n": "~11.1.2",
     "@types/node": "^20.17.10",
     "@vitejs/plugin-vue": "^5.2.1",
+    "@vitest/coverage-v8": "^3.2.6",
     "@vue/eslint-config-prettier": "^10.2.0",
+    "@vue/test-utils": "^2.4.11",
     "eslint": "^9.17.0",
     "eslint-plugin-vue": "^9.32.0",
     "gray-matter": "^4.0.3",
+    "happy-dom": "^15.11.7",
     "prettier": "^3.4.2",
     "simple-git-hooks": "^2.11.1",
     "typescript": "^5.7.2",
@@ -45,6 +51,7 @@
     "vite-plugin-pages": "^0.33.3",
     "vite-plugin-vue-layouts-next": "^2.1.0",
     "vite-ssg": "^28.3.0",
+    "vitest": "^3.2.6",
     "vue-eslint-parser": "^9.4.3",
     "vue-tsc": "^2.2.0"
   }

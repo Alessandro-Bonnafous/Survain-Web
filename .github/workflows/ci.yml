@@ -26,3 +26,34 @@ jobs:
 
       - name: Build
         run: npm run build
+
+  test:
+    name: Tests & Coverage
+    runs-on: ubuntu-latest
+    # Nécessaire pour que l'action poste/maj le commentaire de coverage sur la PR.
+    permissions:
+      contents: read
+      pull-requests: write
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v5
+
+      - name: Setup Node
+        uses: actions/setup-node@v5
+        with:
+          node-version-file: '.nvmrc'
+          cache: 'npm'
+
+      - name: Install dependencies
+        run: npm ci
+
+      # Échoue si un test échoue. Le pourcentage de coverage est INDICATIF :
+      # aucun seuil bloquant n'est configuré (cf. vite.config.ts).
+      - name: Run tests with coverage
+        run: npm run coverage
+
+      # Commentaire de PR (sticky) + Job Summary, sans service tiers.
+      # Lit coverage/coverage-summary.json et coverage/coverage-final.json.
+      - name: Report coverage
+        if: always()
+        uses: davelosert/vitest-coverage-report-action@v2
