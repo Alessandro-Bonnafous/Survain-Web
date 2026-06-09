@@ -48,8 +48,70 @@
       }
     },
     "tools": {
-      "title": "Outils",
-      "wip": "Les outils (arbre de craft) arrivent prochainement."
+      "title": "Outils"
+    }
+  },
+  "tools": {
+    "intro": "Arbre de craft : ressources, constructions, transformation, armes et armures par biome et par tier.",
+    "biomeLabel": "Biome",
+    "tierLabel": "Tier",
+    "sections": {
+      "recolte": "Récolte",
+      "constructions": "Constructions",
+      "processing": "Processing",
+      "weapons": "Armes",
+      "armors": "Armures"
+    },
+    "biomes": {
+      "foret": "Forêt",
+      "plaines": "Plaines",
+      "montagnes": "Montagnes",
+      "cote": "Côte maritime"
+    },
+    "tiers": {
+      "T1": "T1 (gris)",
+      "T2": "T2 (vert)",
+      "T3": "T3 (bleu)"
+    },
+    "headers": {
+      "recolte": {
+        "tool": "Outil",
+        "type": "Type",
+        "t1": "T1",
+        "t2": "T2",
+        "t3": "T3",
+        "annexes": "Annexes"
+      },
+      "construction": { "building": "Bâtiment", "t1": "T1", "t2": "T2", "t3": "T3" },
+      "processing": {
+        "category": "Catégorie",
+        "t1": "T1 — Hutte Craft",
+        "t2": "T2 — Maison Artisanale",
+        "t3": "T3 — Hall des Artisans"
+      },
+      "weapon": {
+        "category": "Catégorie",
+        "role": "Rôle",
+        "weapon": "Arme",
+        "qty": "Qté totale",
+        "wood": "Bois craft",
+        "ore": "Minerai craft",
+        "fiber": "Fibres craft",
+        "marine": "Ressources marines craft",
+        "resource": "Ressources craft"
+      },
+      "armor": {
+        "type": "Type",
+        "resistance": "Résistance",
+        "armor": "Armure",
+        "qtyBase": "Qté base",
+        "qtyBonus": "Qté biome suppl.",
+        "wood": "Bois craft",
+        "ore": "Minerai craft",
+        "fiber": "Fibres craft",
+        "marine": "Marines craft",
+        "animal": "Animal craft"
+      }
     }
   },
   "footer": {
