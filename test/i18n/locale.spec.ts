@@ -1,5 +1,10 @@
 import { afterEach, beforeEach, describe, expect, it } from 'vitest'
-import { LOCALE_STORAGE_KEY, isSupportedLocale, persistLocale, readStoredLocale } from '@/i18n/locale'
+import {
+  LOCALE_STORAGE_KEY,
+  isSupportedLocale,
+  persistLocale,
+  readStoredLocale,
+} from '@/i18n/locale'
 
 describe('isSupportedLocale', () => {
   it('accepte les locales supportées', () => {
