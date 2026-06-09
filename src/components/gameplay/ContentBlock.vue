@@ -16,9 +16,9 @@
 
   <ExampleSelector
     v-else-if="block.kind === 'selector'"
+    v-slot="{ option }"
     :label="block.label"
     :options="block.options"
-    #default="{ option }"
   >
     <ContentBlock v-for="(child, i) in option.blocks" :key="i" :block="child" />
   </ExampleSelector>
