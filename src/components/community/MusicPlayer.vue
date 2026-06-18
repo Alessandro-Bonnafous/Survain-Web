@@ -48,7 +48,7 @@ function select(index: number): void {
 <style scoped>
 .music-player__list {
   list-style: none;
-  margin: 0 0 1rem;
+  margin: 0 0 1.1rem;
   padding: 0;
   display: flex;
   flex-direction: column;
@@ -58,22 +58,30 @@ function select(index: number): void {
 .music-player__track {
   width: 100%;
   text-align: left;
-  font-family: var(--font-body);
-  background: transparent;
-  color: var(--color-gold);
-  border: 1px solid var(--color-gold);
-  padding: 0.6rem 0.9rem;
+  font-family: var(--font-display);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  font-size: 0.72rem;
+  font-weight: 600;
+  background: rgba(202, 164, 90, 0.06);
+  color: var(--parchment);
+  border: 1px solid rgba(202, 164, 90, 0.28);
+  padding: 0.65rem 0.95rem;
   cursor: pointer;
-  border-radius: 2px;
+  clip-path: polygon(7px 0, 100% 0, 100% calc(100% - 7px), calc(100% - 7px) 100%, 0 100%, 0 7px);
   transition:
-    background-color 0.2s ease,
-    color 0.2s ease;
+    background 0.25s,
+    color 0.25s,
+    border-color 0.25s;
 }
-
-.music-player__track--active,
 .music-player__track:hover {
-  background-color: var(--color-gold);
-  color: var(--color-black);
+  color: var(--color-gold-light);
+  border-color: rgba(202, 164, 90, 0.5);
+}
+.music-player__track--active {
+  background: linear-gradient(150deg, var(--color-gold-light), var(--color-gold) 70%);
+  border-color: transparent;
+  color: #1a1206;
 }
 
 .music-player__audio {

@@ -50,4 +50,9 @@ describe('Home (hero v7)', () => {
     const wrapper = mountHome('fr')
     expect(wrapper.find('#univers').text()).toContain('univers impitoyable de SURVAIN')
   })
+
+  it('rend la section Communauté (cible #communaute)', () => {
+    const wrapper = mountHome()
+    expect(wrapper.find('#communaute').exists()).toBe(true)
+  })
 })

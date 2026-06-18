@@ -208,6 +208,23 @@ npm run format   # Prettier
   - NB : la page `/community` reste sur l'**ancienne** DA (layout `default`) —
     à migrer lors du lot Communauté.
 
+- **2026-06-18 — Sprint B (3/n) : section Communauté**
+  - `home/CommunauteSection.vue` (cible `#communaute`) ajoutée sous Univers sur
+    la home, nouvelle DA : carte Discord (logo + CTA chanfreiné), carte Musiques
+    (`MusicPlayer` restylé), grille « À venir » (6 chips). Contenu repris de
+    l'ancienne `/community`.
+  - **`community.vue` supprimé** ; `/community` → redirection vers `/#communaute`
+    (`main.ts`). Plus aucune page sur le layout `default` (devenu fallback inerte ;
+    `AppHeader`/`AppFooter`/ancien `AppNav` conservés mais non rendus).
+  - **Bug asset corrigé** : `discord-logo.png` avait un faux damier *peint* dans
+    ses pixels (opaque, R≈G≈B) — il se serait affiché tel quel. Détouré par
+    flood-fill achromatique depuis les bords (`scripts/make-discord-transparent.mjs`)
+    → `discord-logo-transparent.png` (squircle bleu + emblème blanc préservés).
+  - Tests : `CommunauteSection.spec` (reprend les assertions de l'ex-`community.spec`),
+    `community.spec` supprimé. 52 tests verts.
+  - **Reste du Sprint B** : section/onglet Ascension, **Footer** (absent du site
+    depuis le retrait de `/community`), migration éventuelle du reste.
+
 ## Décisions en attente
 
 - **Intégration maquette Thierry** (UX/design) — en cours côté Thierry. Le

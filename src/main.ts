@@ -14,9 +14,11 @@ import '@/styles/tokens.css'
 
 const routes = setupLayouts(generatedRoutes)
 
-// Redirections : la page Gameplay fusionne désormais Gameplay + Outils
-// (sous-onglets). L'ancienne route /tools redirige vers /gameplay.
+// Redirections vers le nouveau modèle (pages refondues / sections de la home) :
+// - /tools → /gameplay (sous-onglet « Arbre de craft »)
+// - /community → /#communaute (section de la home)
 routes.push({ path: '/tools', redirect: '/gameplay' })
+routes.push({ path: '/community', redirect: '/#communaute' })
 
 // `createApp` est consommé par vite-ssg pour le rendu statique et l'hydratation.
 export const createApp = ViteSSG(
