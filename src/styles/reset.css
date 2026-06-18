@@ -14,6 +14,14 @@ body {
   height: 100%;
 }
 
+/* Défilement doux pour les ancres de navigation mono-page (#univers, …),
+   désactivé si l'utilisateur préfère réduire les animations. */
+@media (prefers-reduced-motion: no-preference) {
+  html {
+    scroll-behavior: smooth;
+  }
+}
+
 body {
   line-height: 1.5;
   -webkit-font-smoothing: antialiased;

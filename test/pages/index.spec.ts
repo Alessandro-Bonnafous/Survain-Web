@@ -44,4 +44,16 @@ describe('Home (hero v7)', () => {
     const navHrefs = wrapper.findAll('.nav__links a').map((a) => a.attributes('href'))
     expect(navHrefs).toEqual(['#univers', '#gameplay', '#communaute'])
   })
+
+  it('rend la section Univers (cible #univers) avec les trois paragraphes de lore', () => {
+    const wrapper = mountHome()
+    const univers = wrapper.find('#univers')
+    expect(univers.exists()).toBe(true)
+    expect(univers.findAll('.univers__p')).toHaveLength(3)
+  })
+
+  it('affiche le lore en français dans la section Univers', () => {
+    const wrapper = mountHome('fr')
+    expect(wrapper.find('#univers').text()).toContain('univers impitoyable de SURVAIN')
+  })
 })
