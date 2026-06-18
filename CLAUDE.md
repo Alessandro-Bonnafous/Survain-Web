@@ -138,6 +138,40 @@ npm run format   # Prettier
   - Le tag `v0.1.0` (et sa Release vide) a été recréé sur le commit corrigé
     (rien n'avait été déployé sur les tentatives précédentes).
 
+- **2026-06-18 — Intégration hero v7 (Sprint A) : fondations + AppNav + HeroSection**
+  - Direction visuelle « théâtrale Norse, gravée romaine » validée en HTML
+    (prototype hero v7), intégrée en Vue 3 sur la **home uniquement** (Sprint A).
+  - **Police display définitive : Cinzel** (remplace Allura) via
+    `@fontsource/cinzel` (poids 400→800 importés dans `main.ts`).
+  - **Tokens étendus** (`tokens.css`) : `--stone-light/stone/stone-dark`,
+    `--ink`, `--parchment`, `--ash`, `--ease-theatrical`, `--chamfer`,
+    `--tracking-caps`. Couleurs or/rouge du POC conservées.
+  - **Composants** : `ui/Btn.vue` (boutons chanfreinés primary/ghost),
+    `ui/LangSwitcher.vue` (menu déroulant accessible, fermeture clic dehors +
+    Échap), `layout/AppNav.vue` (nav fixe transparente, devient opaque au
+    scroll), `home/HeroSection.vue`. Composable `composables/useEmbers.ts`
+    (braises générées dynamiquement, respecte `prefers-reduced-motion`).
+  - **Wordmark** intégré comme PNG transparent (`public/images/survain-wordmark.png`)
+    — suppression du hack `mix-blend-mode`. Background hero positionné
+    `right center` (sujet à droite : guerrier + feu de camp).
+  - **Décisions d'intégration** (le repo a divergé du plan d'origine, écrit pour
+    l'état « coming soon » mono-page) :
+    - La home porte une **nav fixe mono-page** (ancres `#univers/#gameplay/
+      #communaute`, sections à venir en Sprint B). Elle sort donc du layout
+      `default` (AppHeader/AppNav/AppFooter) via un nouveau layout **`blank`**
+      (`<route>{ meta: { layout: 'blank' } }`) — sinon double nav.
+    - Les pages **Gameplay et Outils** sont **mises de côté** (toujours
+      présentes et routables, mais hors du nouveau flux home) ; réintégration
+      dans un second temps.
+    - i18n **fusionné** (et non écrasé) : ajout du namespace `hero`, des clés
+      `nav.univers/nav.communaute` et `coming_soon`, sans toucher aux
+      traductions existantes (gameplay, community, arbre de craft, footer).
+    - Asset corrigé : le fond hero est `hero-bg.png` (le plan citait `.jpg`).
+  - **Note environnement** : build/lint validés sous **Node 20.20.2** (installé
+    via nvm ; le shell était par défaut sur Node 18 incompatible — ESM/CJS).
+  - À venir **Sprint B** : sections Univers, Ascension, Communauté, Footer, et
+    réintégration Gameplay/Outils dans la nouvelle DA.
+
 ## Décisions en attente
 
 - **Intégration maquette Thierry** (UX/design) — en cours côté Thierry. Le

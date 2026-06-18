@@ -6,10 +6,21 @@
   "nav": {
     "home": "Home",
     "gameplay": "Gameplay",
+    "univers": "World",
     "community": "Community",
+    "communaute": "Community",
     "tools": "Tools",
     "trailer": "Trailer"
   },
+  "hero": {
+    "tagline_pre": "Survival · Strategy ·",
+    "tagline_hl": "Norse Mythology",
+    "lede": "A layered, living, interconnected world. From the solitary land to the entire kingdom, build your lineage, conquer your enemies, write your legend.",
+    "cta_primary": "Join the adventure",
+    "cta_ghost": "Development log",
+    "scroll": "Scroll down"
+  },
+  "coming_soon": "The official site is being built",
   "home": {
     "presentation": {
       "title": "Presentation",

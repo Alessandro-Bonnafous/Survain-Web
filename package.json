@@ -25,6 +25,7 @@
     "pre-commit": "npm run lint"
   },
   "dependencies": {
+    "@fontsource/cinzel": "^5.2.8",
     "vue": "^3.5.13",
     "vue-i18n": "^9.14.2",
     "vue-router": "^4.5.0"

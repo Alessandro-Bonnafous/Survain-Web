@@ -1,0 +1,163 @@
+<template>
+  <header :class="['nav', scrolled && 'is-scrolled']">
+    <a href="#" class="brand" :aria-label="t('site.title')">
+      <img class="brand__logo" src="/images/survain-wordmark.png" :alt="t('site.title')" />
+    </a>
+
+    <nav>
+      <ul class="nav__links">
+        <li>
+          <a href="#univers">{{ t('nav.univers') }}</a>
+        </li>
+        <li>
+          <a href="#gameplay">{{ t('nav.gameplay') }}</a>
+        </li>
+        <li>
+          <a href="#communaute">{{ t('nav.communaute') }}</a>
+        </li>
+      </ul>
+    </nav>
+
+    <div class="nav__right">
+      <div class="nav__social">
+        <a href="#" aria-label="Discord">
+          <svg viewBox="0 0 24 24" fill="currentColor">
+            <path
+              d="M19.27 5.33C17.94 4.71 16.5 4.26 15 4a.09.09 0 0 0-.07.03c-.18.33-.39.76-.53 1.09a16.09 16.09 0 0 0-4.8 0c-.14-.34-.35-.76-.54-1.09-.01-.02-.04-.03-.07-.03-1.5.26-2.93.71-4.27 1.33-.01 0-.02.01-.03.02-2.72 4.07-3.47 8.03-3.1 11.95 0 .02.01.04.03.05 1.8 1.32 3.53 2.12 5.24 2.65.03.01.06 0 .07-.02.4-.55.76-1.13 1.07-1.74.02-.04 0-.08-.04-.09-.57-.22-1.11-.48-1.64-.78-.04-.02-.04-.08-.01-.11.11-.08.22-.17.33-.25.02-.02.05-.02.07-.01 3.44 1.57 7.15 1.57 10.55 0 .02-.01.05 0 .07.01.11.09.22.17.33.26.04.03.04.09-.01.11-.52.31-1.07.56-1.64.78-.04.01-.05.06-.04.09.32.61.68 1.19 1.07 1.74.03.01.06.02.09.01 1.72-.53 3.45-1.33 5.25-2.65.02-.01.03-.03.03-.05.44-4.53-.73-8.46-3.1-11.95-.01-.01-.02-.02-.04-.02zM8.52 14.91c-1.03 0-1.89-.95-1.89-2.12s.84-2.12 1.89-2.12c1.06 0 1.9.96 1.89 2.12 0 1.17-.84 2.12-1.89 2.12zm6.97 0c-1.03 0-1.89-.95-1.89-2.12s.84-2.12 1.89-2.12c1.06 0 1.9.96 1.89 2.12 0 1.17-.83 2.12-1.89 2.12z"
+            />
+          </svg>
+        </a>
+      </div>
+      <div class="nav__sep" />
+      <LangSwitcher />
+    </div>
+  </header>
+</template>
+
+<script setup lang="ts">
+import { ref, onMounted, onBeforeUnmount } from 'vue'
+import { useI18n } from 'vue-i18n'
+import LangSwitcher from '@/components/ui/LangSwitcher.vue'
+
+const { t } = useI18n()
+const scrolled = ref(false)
+
+function onScroll() {
+  scrolled.value = window.scrollY > 40
+}
+
+onMounted(() => {
+  window.addEventListener('scroll', onScroll, { passive: true })
+  onScroll()
+})
+onBeforeUnmount(() => {
+  window.removeEventListener('scroll', onScroll)
+})
+</script>
+
+<style scoped>
+.nav {
+  position: fixed;
+  inset: 0 0 auto 0;
+  z-index: 100;
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+  padding: 1.1rem 2.5rem;
+  transition:
+    background 0.5s ease,
+    border-color 0.5s ease,
+    padding 0.5s ease;
+  border-bottom: 1px solid transparent;
+}
+.nav.is-scrolled {
+  background: rgba(5, 6, 8, 0.9);
+  backdrop-filter: blur(12px);
+  border-bottom-color: rgba(202, 164, 90, 0.16);
+  padding: 0.7rem 2.5rem;
+}
+
+.brand {
+  display: flex;
+  flex: none;
+}
+.brand__logo {
+  height: 34px;
+  width: auto;
+  max-width: 220px;
+  object-fit: contain;
+  display: block;
+}
+
+.nav__links {
+  display: flex;
+  gap: 1.9rem;
+  align-items: center;
+  list-style: none;
+  margin: 0 0 0 1.5rem;
+  padding: 0;
+}
+.nav__links a {
+  font-family: var(--font-display);
+  text-transform: uppercase;
+  font-size: 0.72rem;
+  font-weight: 500;
+  letter-spacing: 0.16em;
+  color: var(--parchment);
+  text-decoration: none;
+  padding: 0.4rem 0;
+  transition: color 0.3s;
+}
+.nav__links a:hover {
+  color: var(--color-gold-light);
+}
+
+.nav__right {
+  margin-left: auto;
+  display: flex;
+  align-items: center;
+  gap: 1.3rem;
+}
+.nav__social {
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+}
+.nav__social a {
+  color: var(--parchment);
+  opacity: 0.85;
+  transition:
+    color 0.3s,
+    opacity 0.3s;
+  display: grid;
+  place-items: center;
+}
+.nav__social a:hover {
+  color: var(--color-gold-light);
+  opacity: 1;
+}
+.nav__social svg {
+  width: 18px;
+  height: 18px;
+}
+.nav__sep {
+  width: 1px;
+  height: 22px;
+  background: rgba(202, 164, 90, 0.25);
+}
+
+@media (max-width: 1180px) {
+  .nav__links {
+    display: none;
+  }
+}
+@media (max-width: 680px) {
+  .nav {
+    padding: 0.9rem 1.2rem;
+    gap: 1rem;
+  }
+  .nav__social {
+    display: none;
+  }
+}
+</style>

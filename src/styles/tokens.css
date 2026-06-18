@@ -1,9 +1,25 @@
 :root {
+  /* Couleurs gardées du POC Pascal */
   --color-gold: #caa45a;
   --color-gold-light: #f2d58e;
   --color-gold-dark: #3d260b;
   --color-red: #c01818;
   --color-black: #020202;
-  --font-display: 'Allura', cursive;
+
+  /* Palette étendue pour la direction gravée */
+  --stone-light: #ece7da;
+  --stone: #c2bcae;
+  --stone-dark: #6d685c;
+  --ink: #07080a; /* noir froid, fond principal */
+  --parchment: #cfc6b4; /* texte corps, plus chaud que blanc */
+  --ash: #8a8270; /* texte secondaire */
+
+  /* Typographie */
+  --font-display: 'Cinzel', Georgia, serif;
   --font-body: Georgia, 'Times New Roman', serif;
+
+  /* Métriques */
+  --tracking-caps: 0.3em;
+  --ease-theatrical: cubic-bezier(0.22, 1, 0.36, 1);
+  --chamfer: 11px;
 }
