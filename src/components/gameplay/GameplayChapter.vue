@@ -18,28 +18,31 @@ const { t } = useI18n()
 
 <style scoped>
 .gameplay-chapter {
-  margin-bottom: 2.5rem;
-  padding-bottom: 1.5rem;
-  border-bottom: 1px solid var(--color-gold-dark);
+  margin-bottom: 3rem;
+  padding-bottom: 2rem;
+  border-bottom: 1px solid rgba(202, 164, 90, 0.16);
 }
 
 .gameplay-chapter:last-child {
   border-bottom: none;
+  margin-bottom: 0;
 }
 
 .gameplay-chapter__title {
-  font-family: var(--font-body);
+  font-family: var(--font-display);
+  font-weight: 600;
   text-transform: uppercase;
-  letter-spacing: 0.04em;
+  letter-spacing: 0.08em;
+  font-size: 1.25rem;
   color: var(--color-gold);
-  margin: 0 0 0.5rem;
+  margin: 0 0 0.6rem;
 }
 
 .gameplay-chapter__summary {
   font-family: var(--font-body);
   font-style: italic;
-  color: var(--color-gold-light);
-  opacity: 0.85;
-  margin: 0 0 1rem;
+  color: var(--ash);
+  margin: 0 0 1.4rem;
+  line-height: 1.6;
 }
 </style>

@@ -8,6 +8,7 @@ coverage/
 .vite/
 .vscode/*
 !.vscode/extensions.json
+.idea/
 
 # Claude Code (local only)
 .claude/settings.local.json

@@ -184,6 +184,30 @@ npm run format   # Prettier
     ancres mono-page.
   - À venir : sections Ascension, Communauté, Footer (contenu à fournir).
 
+- **2026-06-18 — Sprint B (2/n) : page Gameplay (fusion Gameplay + Outils)**
+  - Nouvelle page `/gameplay` (layout `blank`, nouvelle DA) fusionnant l'ancien
+    Gameplay et l'ancien Outils sous **deux sous-onglets** « Gameplay » /
+    « Arbre de craft ». Logique préservée, juste réorganisée :
+    - `components/gameplay/GameplayCategories.vue` (onglets de catégories +
+      chapitres) extrait de l'ancien `gameplay.vue`.
+    - `components/gameplay/CraftTree.vue` (arbre de craft : sections + sélecteurs
+      biome/tier + tableaux, avec `tv`/`tvi`/`translateCost`) extrait de l'ancien
+      `tools.vue`.
+  - **`tools.vue` supprimé** ; route `/tools` → redirection vers `/gameplay`
+    (`main.ts`). NB : en SSG, `dist/tools.html` est rendu avec le contenu de
+    Gameplay (dégradation gracieuse) + le routeur redirige côté client.
+  - **Nav multi-page** : `AppNav` déplacé dans le layout `blank` (partagé
+    home + gameplay). Liens passés en `RouterLink` : `/#univers`, `/gameplay`,
+    `/#communaute` ; `scrollBehavior` ajouté (ViteSSG) pour le défilement vers
+    l'ancre, y compris cross-page. La home (`index.vue`) ne porte plus `AppNav`.
+  - Restyle DA des composants de contenu : `InfoTable` (en-têtes Cinzel dorés,
+    lignes zébrées, parchemin), `GameplayChapter`, `ContentBlock`,
+    `ExampleSelector` ; onglets chanfreinés cohérents avec les boutons.
+  - Tests : `CraftTree.spec` (ex-`tools.spec`), `gameplay.spec` adapté
+    (sous-onglets) ; `tools.spec` supprimé. 50 tests verts.
+  - NB : la page `/community` reste sur l'**ancienne** DA (layout `default`) —
+    à migrer lors du lot Communauté.
+
 ## Décisions en attente
 
 - **Intégration maquette Thierry** (UX/design) — en cours côté Thierry. Le

@@ -1,23 +1,23 @@
 <template>
   <header :class="['nav', scrolled && 'is-scrolled']">
-    <a href="#" class="brand" :aria-label="t('site.title')">
+    <RouterLink to="/" class="brand" :aria-label="t('site.title')">
       <img
         class="brand__logo"
         src="/images/survain-wordmark-transparent.png"
         :alt="t('site.title')"
       />
-    </a>
+    </RouterLink>
 
     <nav>
       <ul class="nav__links">
         <li>
-          <a href="#univers">{{ t('nav.univers') }}</a>
+          <RouterLink to="/#univers">{{ t('nav.univers') }}</RouterLink>
         </li>
         <li>
-          <a href="#gameplay">{{ t('nav.gameplay') }}</a>
+          <RouterLink to="/gameplay">{{ t('nav.gameplay') }}</RouterLink>
         </li>
         <li>
-          <a href="#communaute">{{ t('nav.communaute') }}</a>
+          <RouterLink to="/#communaute">{{ t('nav.communaute') }}</RouterLink>
         </li>
       </ul>
     </nav>

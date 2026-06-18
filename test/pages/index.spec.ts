@@ -39,12 +39,6 @@ describe('Home (hero v7)', () => {
     expect(labels).toContain('Carnet de développement')
   })
 
-  it('rend la nav mono-page avec les ancres univers / gameplay / communauté', () => {
-    const wrapper = mountHome()
-    const navHrefs = wrapper.findAll('.nav__links a').map((a) => a.attributes('href'))
-    expect(navHrefs).toEqual(['#univers', '#gameplay', '#communaute'])
-  })
-
   it('rend la section Univers (cible #univers) avec les trois paragraphes de lore', () => {
     const wrapper = mountHome()
     const univers = wrapper.find('#univers')

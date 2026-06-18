@@ -12,7 +12,6 @@
 </route>
 
 <template>
-  <AppNav />
   <main>
     <HeroSection />
     <UniversSection />
@@ -20,7 +19,6 @@
 </template>
 
 <script setup lang="ts">
-import AppNav from '@/components/layout/AppNav.vue'
 import HeroSection from '@/components/home/HeroSection.vue'
 import UniversSection from '@/components/home/UniversSection.vue'
 </script>
