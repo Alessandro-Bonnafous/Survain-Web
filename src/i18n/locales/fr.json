@@ -6,10 +6,21 @@
   "nav": {
     "home": "Accueil",
     "gameplay": "Gameplay",
+    "univers": "Univers",
     "community": "Communauté",
+    "communaute": "Communauté",
     "tools": "Outils",
     "trailer": "Trailer"
   },
+  "hero": {
+    "tagline_pre": "Survie · Stratégie ·",
+    "tagline_hl": "Mythologie nordique",
+    "lede": "Un monde stratifié, vivant, interconnecté. De la contrée solitaire au royaume entier, bâtissez votre lignée, conquérez vos ennemis, et écrivez votre légende.",
+    "cta_primary": "Rejoindre l'aventure",
+    "cta_ghost": "Carnet de développement",
+    "scroll": "Faire défiler"
+  },
+  "coming_soon": "Le site officiel est en cours de construction",
   "home": {
     "presentation": {
       "title": "Présentation",
