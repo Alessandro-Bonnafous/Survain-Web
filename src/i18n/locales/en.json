@@ -37,7 +37,11 @@
   },
   "pages": {
     "gameplay": {
-      "title": "Gameplay"
+      "title": "Gameplay",
+      "tabs": {
+        "gameplay": "Gameplay",
+        "craft": "Craft tree"
+      }
     },
     "community": {
       "title": "Community",

@@ -1,16 +1,15 @@
 <template>
-  <section class="tools">
-    <h1 class="tools__title">{{ t('pages.tools.title') }}</h1>
-    <p class="tools__intro">{{ t('tools.intro') }}</p>
+  <div class="craft">
+    <p class="craft__intro">{{ t('tools.intro') }}</p>
 
-    <div class="tools__tabs" role="tablist">
+    <div class="craft__tabs" role="tablist">
       <button
         v-for="section in SECTIONS"
         :key="section"
         type="button"
         role="tab"
-        class="tools__tab"
-        :class="{ 'tools__tab--active': section === activeSection }"
+        class="craft__tab"
+        :class="{ 'craft__tab--active': section === activeSection }"
         :aria-selected="section === activeSection"
         @click="activeSection = section"
       >
@@ -18,19 +17,19 @@
       </button>
     </div>
 
-    <div class="tools__controls">
-      <label v-if="perBiome" class="tools__control">
+    <div class="craft__controls">
+      <label v-if="perBiome" class="craft__control">
         <span>{{ t('tools.biomeLabel') }}</span>
-        <select v-model="biomeId" class="tools__select">
+        <select v-model="biomeId" class="craft__select">
           <option v-for="biome in BIOMES" :key="biome.id" :value="biome.id">
             {{ t(`tools.biomes.${biome.id}`) }}
           </option>
         </select>
       </label>
 
-      <label v-if="perTier" class="tools__control">
+      <label v-if="perTier" class="craft__control">
         <span>{{ t('tools.tierLabel') }}</span>
-        <select v-model="tier" class="tools__select">
+        <select v-model="tier" class="craft__select">
           <option v-for="tierOption in TIERS" :key="tierOption" :value="tierOption">
             {{ t(`tools.tiers.${tierOption}`) }}
           </option>
@@ -39,7 +38,7 @@
     </div>
 
     <InfoTable :headers="table.headers" :rows="table.rows" />
-  </section>
+  </div>
 </template>
 
 <script setup lang="ts">
@@ -221,67 +220,76 @@ const table = computed<TableData>(() => {
 </script>
 
 <style scoped>
-.tools__title {
+.craft__intro {
   font-family: var(--font-body);
-  text-transform: uppercase;
-  letter-spacing: 0.05em;
-  color: var(--color-gold);
+  color: var(--ash);
+  max-width: 60ch;
+  margin: 0 0 2rem;
+  line-height: 1.6;
 }
 
-.tools__intro {
-  font-family: var(--font-body);
-  color: var(--color-gold-light);
-  opacity: 0.85;
-}
-
-.tools__tabs {
+.craft__tabs {
   display: flex;
   flex-wrap: wrap;
-  gap: 0.5rem;
-  margin: 1.5rem 0 1rem;
+  gap: 0.6rem;
+  margin: 0 0 1.6rem;
 }
-
-.tools__tab {
-  font-family: var(--font-body);
-  background: transparent;
-  color: var(--color-gold);
-  border: 1px solid var(--color-gold);
-  padding: 0.5rem 1rem;
+.craft__tab {
+  font-family: var(--font-display);
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  font-size: 0.7rem;
+  font-weight: 600;
+  color: var(--parchment);
+  background: rgba(202, 164, 90, 0.06);
+  border: 1px solid rgba(202, 164, 90, 0.28);
+  padding: 0.6rem 1.1rem;
   cursor: pointer;
-  border-radius: 2px;
+  clip-path: polygon(8px 0, 100% 0, 100% calc(100% - 8px), calc(100% - 8px) 100%, 0 100%, 0 8px);
   transition:
-    background-color 0.2s ease,
-    color 0.2s ease;
+    background 0.25s,
+    color 0.25s,
+    border-color 0.25s;
+}
+.craft__tab:hover {
+  color: var(--color-gold-light);
+  border-color: rgba(202, 164, 90, 0.5);
+}
+.craft__tab--active {
+  background: linear-gradient(150deg, var(--color-gold-light), var(--color-gold) 70%);
+  border-color: transparent;
+  color: #1a1206;
 }
 
-.tools__tab--active,
-.tools__tab:hover {
-  background-color: var(--color-gold);
-  color: var(--color-black);
-}
-
-.tools__controls {
+.craft__controls {
   display: flex;
   flex-wrap: wrap;
   gap: 1.5rem;
-  margin-bottom: 0.5rem;
+  margin-bottom: 1.4rem;
 }
-
-.tools__control {
+.craft__control {
   display: flex;
   flex-direction: column;
-  gap: 0.3rem;
-  font-family: var(--font-body);
+  gap: 0.4rem;
+  font-family: var(--font-display);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  font-size: 0.68rem;
   color: var(--color-gold);
 }
-
-.tools__select {
+.craft__select {
   font-family: var(--font-body);
-  background: var(--color-black);
-  color: var(--color-gold-light);
-  border: 1px solid var(--color-gold);
-  padding: 0.4rem 0.6rem;
-  border-radius: 2px;
-  min-width: 12rem;
+  text-transform: none;
+  letter-spacing: normal;
+  font-size: 0.95rem;
+  background: rgba(7, 8, 10, 0.9);
+  color: var(--parchment);
+  border: 1px solid rgba(202, 164, 90, 0.4);
+  padding: 0.5rem 0.7rem;
+  min-width: 13rem;
+}
+.craft__select:focus-visible {
+  outline: 2px solid var(--color-gold-light);
+  outline-offset: 2px;
 }
 </style>

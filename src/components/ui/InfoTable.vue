@@ -22,7 +22,8 @@ defineProps<{ headers: string[]; rows: string[][] }>()
 <style scoped>
 .info-table__wrap {
   overflow-x: auto;
-  margin: 1rem 0;
+  margin: 0;
+  border: 1px solid rgba(202, 164, 90, 0.22);
 }
 
 .info-table {
@@ -33,19 +34,36 @@ defineProps<{ headers: string[]; rows: string[][] }>()
 
 .info-table th,
 .info-table td {
-  border: 1px solid var(--color-gold);
-  padding: 0.5rem 0.75rem;
+  padding: 0.7rem 0.9rem;
   text-align: left;
+  border-bottom: 1px solid rgba(202, 164, 90, 0.14);
 }
 
 .info-table th {
+  font-family: var(--font-display);
   color: var(--color-gold);
+  background: rgba(202, 164, 90, 0.08);
   text-transform: uppercase;
-  font-size: 0.85rem;
-  letter-spacing: 0.03em;
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  white-space: nowrap;
+  position: sticky;
+  top: 0;
+}
+
+.info-table tbody tr:nth-child(even) {
+  background: rgba(202, 164, 90, 0.03);
+}
+.info-table tbody tr:hover {
+  background: rgba(202, 164, 90, 0.07);
 }
 
 .info-table td {
-  color: var(--color-gold-light);
+  color: var(--parchment);
+  font-size: 0.95rem;
+}
+.info-table tbody tr:last-child td {
+  border-bottom: none;
 }
 </style>

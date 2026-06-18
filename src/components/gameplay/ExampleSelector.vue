@@ -26,28 +26,40 @@ const selected = ref(0)
 
 <style scoped>
 .example-selector {
-  margin: 1rem 0;
+  margin: 1.4rem 0;
+  padding: 1.2rem 1.3rem;
+  border: 1px solid rgba(202, 164, 90, 0.2);
+  background: rgba(202, 164, 90, 0.03);
 }
 
 .example-selector__label {
   display: flex;
   flex-direction: column;
-  gap: 0.4rem;
-  font-family: var(--font-body);
+  gap: 0.45rem;
+  font-family: var(--font-display);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  font-size: 0.68rem;
   color: var(--color-gold);
 }
 
 .example-selector__select {
   font-family: var(--font-body);
-  background: var(--color-black);
-  color: var(--color-gold-light);
-  border: 1px solid var(--color-gold);
-  padding: 0.4rem 0.6rem;
-  border-radius: 2px;
+  text-transform: none;
+  letter-spacing: normal;
+  font-size: 0.95rem;
+  background: rgba(7, 8, 10, 0.9);
+  color: var(--parchment);
+  border: 1px solid rgba(202, 164, 90, 0.4);
+  padding: 0.5rem 0.7rem;
   max-width: 28rem;
+}
+.example-selector__select:focus-visible {
+  outline: 2px solid var(--color-gold-light);
+  outline-offset: 2px;
 }
 
 .example-selector__panel {
-  margin-top: 0.75rem;
+  margin-top: 1rem;
 }
 </style>

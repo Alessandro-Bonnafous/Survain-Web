@@ -68,34 +68,35 @@ function imageSrc(id: string): string {
 <style scoped>
 .content-block__paragraph {
   font-family: var(--font-body);
-  line-height: 1.6;
-  color: var(--color-gold-light);
-  margin: 0 0 1rem;
+  line-height: 1.75;
+  color: var(--parchment);
+  margin: 0 0 1.1rem;
 }
 
 .content-block__list {
   font-family: var(--font-body);
-  line-height: 1.6;
-  color: var(--color-gold-light);
-  margin: 0 0 1rem;
+  line-height: 1.75;
+  color: var(--parchment);
+  margin: 0 0 1.1rem;
   padding-left: 1.25rem;
 }
 
 .content-block__list li {
-  margin-bottom: 0.5rem;
+  margin-bottom: 0.55rem;
 }
 
 .content-block__list strong {
-  color: var(--color-gold);
+  color: var(--color-gold-light);
+  font-weight: 600;
 }
 
 .content-block__figure {
-  margin: 1rem 0;
+  margin: 1.4rem 0;
 }
 
 .content-block__figure img {
   max-width: 100%;
   height: auto;
-  border: 1px solid var(--color-gold);
+  border: 1px solid rgba(202, 164, 90, 0.3);
 }
 </style>
