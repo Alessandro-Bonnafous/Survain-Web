@@ -1,7 +1,11 @@
 <template>
   <header :class="['nav', scrolled && 'is-scrolled']">
     <a href="#" class="brand" :aria-label="t('site.title')">
-      <img class="brand__logo" src="/images/survain-wordmark.png" :alt="t('site.title')" />
+      <img
+        class="brand__logo"
+        src="/images/survain-wordmark-transparent.png"
+        :alt="t('site.title')"
+      />
     </a>
 
     <nav>

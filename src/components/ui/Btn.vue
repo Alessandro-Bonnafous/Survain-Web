@@ -67,11 +67,13 @@ defineProps<{
 .btn--primary .btn__face {
   background: linear-gradient(150deg, var(--color-gold-light), var(--color-gold) 60%, #a07c38);
   color: #1a1206;
-  box-shadow: 0 6px 26px rgba(202, 164, 90, 0.25);
+  /* Spread négatif : la lueur dorée reste sous le bouton et ne déborde pas sur
+     le bouton voisin (sinon une bordure dorée « apparaît » sur le ghost). */
+  box-shadow: 0 6px 20px -6px rgba(202, 164, 90, 0.3);
 }
 .btn--primary:hover .btn__face {
   filter: brightness(1.12);
-  box-shadow: 0 10px 32px rgba(202, 164, 90, 0.45);
+  box-shadow: 0 12px 24px -8px rgba(202, 164, 90, 0.5);
 }
 
 .btn--ghost {
@@ -87,7 +89,8 @@ defineProps<{
   padding: 1px;
 }
 .btn--ghost .btn__face {
-  background: rgba(8, 9, 11, 0.72);
+  /* Face quasi opaque : empêche la lueur d'un bouton voisin de transparaître. */
+  background: rgba(8, 9, 11, 0.92);
   color: var(--color-gold-light);
   backdrop-filter: blur(2px);
 }

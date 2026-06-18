@@ -7,7 +7,11 @@
 
     <div class="hero__inner">
       <div class="hero__content">
-        <img class="wordmark" src="/images/survain-wordmark.png" :alt="t('site.title')" />
+        <img
+          class="wordmark"
+          src="/images/survain-wordmark-transparent.png"
+          :alt="t('site.title')"
+        />
         <p class="hero__tagline">
           {{ t('hero.tagline_pre') }}
           <span class="hl">{{ t('hero.tagline_hl') }}</span>
@@ -56,14 +60,18 @@ useEmbers(embersRef)
   inset: 0;
   z-index: -3;
   background-image: url('/images/hero-bg.png');
-  background-size: cover;
+  /* `contain` : l'image (16:9) est affichée en entier, sans recadrage agressif.
+     Les éventuelles bandes (ratios non-16:9) sont comblées par `--ink`. */
+  background-size: contain;
   background-position: right center;
-  transform: scale(1.02);
+  background-repeat: no-repeat;
+  background-color: var(--ink);
+  transform: scale(1);
   animation: bg-drift 28s ease-in-out infinite alternate;
 }
 @keyframes bg-drift {
   to {
-    transform: scale(1.04) translateX(-0.8%);
+    transform: scale(1.03);
   }
 }
 
