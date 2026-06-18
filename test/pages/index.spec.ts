@@ -3,7 +3,6 @@ import { mount } from '@vue/test-utils'
 import { createI18n } from 'vue-i18n'
 import fr from '@/i18n/locales/fr.json'
 import en from '@/i18n/locales/en.json'
-import { EXTERNAL_LINKS } from '@/config/links'
 import Home from '@/pages/index.vue'
 
 function mountHome(locale: 'fr' | 'en' = 'fr') {
@@ -11,20 +10,38 @@ function mountHome(locale: 'fr' | 'en' = 'fr') {
   return mount(Home, { global: { plugins: [i18n] } })
 }
 
-describe('Home', () => {
-  it('rend les trois paragraphes de présentation', () => {
+// Sprint A : la home porte le hero v7 (wordmark + tagline + lede + 2 CTA) et sa
+// nav fixe mono-page. Le lore détaillé d'antan a été retiré (réintégration
+// prévue en Sprint B via une section « Univers »).
+describe('Home (hero v7)', () => {
+  it('affiche le wordmark SURVAIN', () => {
     const wrapper = mountHome()
-    expect(wrapper.findAll('.home__paragraph')).toHaveLength(3)
+    const img = wrapper.find('img.wordmark')
+    expect(img.exists()).toBe(true)
+    expect(img.attributes('src')).toContain('survain-wordmark')
   })
 
-  it('affiche le lore en français', () => {
+  it('affiche la tagline et le lede en français', () => {
     const wrapper = mountHome('fr')
-    expect(wrapper.text()).toContain('univers impitoyable de SURVAIN')
+    expect(wrapper.text()).toContain('Mythologie nordique')
+    expect(wrapper.text()).toContain('De la contrée solitaire au royaume entier')
   })
 
-  it('expose les CTA trailer et Discord vers les bons liens externes', () => {
+  it('affiche le lede en anglais', () => {
+    const wrapper = mountHome('en')
+    expect(wrapper.text()).toContain('From the solitary land to the entire kingdom')
+  })
+
+  it('expose les deux CTA du hero', () => {
     const wrapper = mountHome()
-    const hrefs = wrapper.findAll('.home__btn').map((a) => a.attributes('href'))
-    expect(hrefs).toEqual([EXTERNAL_LINKS.trailer, EXTERNAL_LINKS.discord])
+    const labels = wrapper.findAll('.btn').map((b) => b.text())
+    expect(labels).toContain("Rejoindre l'aventure")
+    expect(labels).toContain('Carnet de développement')
+  })
+
+  it('rend la nav mono-page avec les ancres univers / gameplay / communauté', () => {
+    const wrapper = mountHome()
+    const navHrefs = wrapper.findAll('.nav__links a').map((a) => a.attributes('href'))
+    expect(navHrefs).toEqual(['#univers', '#gameplay', '#communaute'])
   })
 })
