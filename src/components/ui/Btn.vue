@@ -76,36 +76,26 @@ defineProps<{
   box-shadow: 0 12px 24px -8px rgba(202, 164, 90, 0.5);
 }
 
-.btn--ghost {
-  /* Liseré doré : fond or de l'élément externe, révélé sur 1px par le padding. */
-  background: var(--color-gold);
-  clip-path: polygon(
-    var(--chamfer) 0,
-    100% 0,
-    100% calc(100% - var(--chamfer)),
-    calc(100% - var(--chamfer)) 100%,
-    0 100%,
-    0 var(--chamfer)
-  );
-  padding: 1px;
-  transition: background 0.3s;
-}
+/* Liseré doré chanfreiné via la technique "gradient border" (background-clip)
+   sur UN SEUL élément clippé. L'ancienne version (fond or externe + face sombre
+   chanfrée par-dessus, le tout reposant sur le clip-path de l'élément externe)
+   laissait apparaître des triangles dorés aux coins : sur les écrans HiDPI et au
+   repaint du bouton voisin, le clip-path externe sautait une frame et le
+   rectangle or transparaissait. Ici il n'y a plus de rectangle or à masquer. */
 .btn--ghost .btn__face {
-  /* Face quasi opaque : empêche la lueur d'un bouton voisin de transparaître. */
-  background: rgba(8, 9, 11, 0.92);
-  color: var(--color-gold-light);
-  backdrop-filter: blur(2px);
-}
-/* Au survol, le liseré s'éclaircit (rim plus clair)... */
-.btn--ghost:hover {
-  background: var(--color-gold-light);
-}
-/* ...et la face se teinte d'or PAR-DESSUS le fond sombre (et non en révélant
-   le liseré or par transparence, ce qui virait au bouton plein doré illisible)
-   + légère lueur dorée intérieure. */
-.btn--ghost:hover .btn__face {
+  border: 1.5px solid transparent;
   background:
-    linear-gradient(rgba(202, 164, 90, 0.18), rgba(202, 164, 90, 0.18)), rgba(8, 9, 11, 0.92);
+    linear-gradient(var(--ink), var(--ink)) padding-box,
+    var(--color-gold) border-box;
+  color: var(--color-gold-light);
+}
+.btn--ghost:hover .btn__face {
+  /* Teinte or PAR-DESSUS le fond sombre (pas de remplissage or plein illisible),
+     liseré éclairci + légère lueur dorée intérieure. */
+  background:
+    linear-gradient(rgba(202, 164, 90, 0.18), rgba(202, 164, 90, 0.18)) padding-box,
+    linear-gradient(var(--ink), var(--ink)) padding-box,
+    var(--color-gold-light) border-box;
   color: var(--color-gold-light);
   box-shadow: inset 0 0 18px -4px rgba(242, 213, 142, 0.4);
 }
