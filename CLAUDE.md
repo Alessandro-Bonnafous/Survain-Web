@@ -172,6 +172,18 @@ npm run format   # Prettier
   - À venir **Sprint B** : sections Univers, Ascension, Communauté, Footer, et
     réintégration Gameplay/Outils dans la nouvelle DA.
 
+- **2026-06-18 — Sprint B (1/n) : section Univers**
+  - Première section du Sprint B : `home/UniversSection.vue` (cible de l'ancre
+    `#univers`), ajoutée sous le hero sur la home. Réemploi du lore existant
+    (`home.presentation.paragraphs`) — aucun contenu inventé ; un titre/intro
+    dédié pourra être glissé plus tard (contenu fourni au fil de l'eau par Aless).
+  - DA gravée : eyebrow `nav.univers` encadré de filets dorés, lettrine Cinzel
+    dorée sur le paragraphe d'accroche, corps en `--parchment` justifié, filet
+    doré de séparation avec le hero. `scroll-margin-top` pour dégager la nav fixe.
+  - `scroll-behavior: smooth` ajouté (guardé `prefers-reduced-motion`) pour les
+    ancres mono-page.
+  - À venir : sections Ascension, Communauté, Footer (contenu à fournir).
+
 ## Décisions en attente
 
 - **Intégration maquette Thierry** (UX/design) — en cours côté Thierry. Le
