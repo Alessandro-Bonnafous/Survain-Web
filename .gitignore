@@ -10,6 +10,9 @@ coverage/
 !.vscode/extensions.json
 .idea/
 
+# Prototypes HTML de DA (références locales, hors source du site)
+survain-home-*.html
+
 # Claude Code (local only)
 .claude/settings.local.json
 .claude/scheduled_tasks.lock

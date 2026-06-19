@@ -51,6 +51,12 @@ describe('Home (hero v7)', () => {
     expect(wrapper.find('#univers').text()).toContain('univers impitoyable de SURVAIN')
   })
 
+  it('rend les sections « Le jeu » (#jeu) et « Ascension » (#ascension) entre Univers et Communauté', () => {
+    const wrapper = mountHome()
+    const ids = wrapper.findAll('section[id]').map((s) => s.attributes('id'))
+    expect(ids).toEqual(['univers', 'jeu', 'ascension', 'communaute'])
+  })
+
   it('rend la section Communauté (cible #communaute)', () => {
     const wrapper = mountHome()
     expect(wrapper.find('#communaute').exists()).toBe(true)

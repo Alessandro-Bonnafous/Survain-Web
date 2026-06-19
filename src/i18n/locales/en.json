@@ -7,6 +7,8 @@
     "home": "Home",
     "gameplay": "Gameplay",
     "univers": "World",
+    "jeu": "The game",
+    "ascension": "Ascension",
     "community": "Community",
     "communaute": "Community",
     "tools": "Tools",
@@ -32,6 +34,52 @@
     "cta": {
       "trailer": "Watch the trailer",
       "discord": "Join the Discord"
+    },
+    "game": {
+      "eyebrow": "The game",
+      "title": "From the first ember to the Kingdom's throne",
+      "lead": "Alone in a wild land, you build a village, rally souls to your cause and climb the ranks of a living feudal world — until you weigh on the fate of an entire Kingdom, under the gaze of the Northern gods.",
+      "pillars": {
+        "survival": {
+          "title": "Survival, Exploration & Building",
+          "text": "Four biomes, harsh seasons, wild zones where danger guards the best loot. Gather, craft, build your home."
+        },
+        "politics": {
+          "title": "Politics, Economy & Conquest",
+          "text": "Settler, Baron, Lord, King: an organic rise to power. Taxes, trade routes, castle sieges — balanced battles, no zerg."
+        },
+        "gods": {
+          "title": "Favor of the Gods",
+          "text": "Choose your pantheon, lay down your offerings, trigger rituals and blessings. Wars of religion rage over the sacred relics."
+        }
+      }
+    },
+    "ascension": {
+      "eyebrow": "Territorial progression",
+      "title": "The Ascension",
+      "lead": "Four tiers, from the lone homestead to the war of Regions. Each step unlocks new mechanics — and new rivals.",
+      "steps": {
+        "land": {
+          "name": "Land",
+          "tag": "Solo · PvE",
+          "text": "Your land, your village, your NPCs. Survival, building and wild zones to explore."
+        },
+        "province": {
+          "name": "Province",
+          "tag": "6 lands · Co-op",
+          "text": "Union under a Baron: central market, shared security, first cooperative missions."
+        },
+        "region": {
+          "name": "Region",
+          "tag": "10 provinces · Conquest",
+          "text": "Castle sieges against organized PvE. A player Lord emerges and assigns the roles."
+        },
+        "kingdom": {
+          "name": "Kingdom",
+          "tag": "10 regions · PvP",
+          "text": "Inter-regional wars, dungeons, factions and a living capital under the King's authority."
+        }
+      }
     }
   },
   "pages": {

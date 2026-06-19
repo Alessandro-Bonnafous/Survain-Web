@@ -257,6 +257,29 @@ npm run format   # Prettier
     `console.*` », pas encore mobilisé).
   - 48 tests verts (−6 des 2 specs supprimées), lint + build SSG OK.
 
+- **2026-06-19 — Sprint B (6/n) : sections « Le jeu » + « Ascension »**
+  - Reprise des sections `Le jeu` (#jeu) et `Ascension` (#ascension) du prototype
+    `survain-home-theatrale-v5.html`, **adaptées à la DA gravée** du site (eyebrow
+    à filets dorés, Cinzel, tokens) — sans les animations JS `reveal` du proto
+    (nos sections home restent statiques).
+  - `home/LeJeuSection.vue` : titre + accroche + 3 piliers (Survie / Politique /
+    Faveur des Dieux) avec médaillons SVG (stroke `--color-gold`, fill
+    `--color-gold-dark` via classe, pas de couleurs en dur).
+  - `home/AscensionSection.vue` : 4 paliers (Contrée → Province → Région →
+    Royaume) reliés par une frise dorée, runes Cinzel, palier Royaume marqué
+    « guerre » (PvP, rune en `--color-red`). Fond `--color-black` (contraste avec
+    les sections `--ink`), frise verticale en pile < 880px.
+  - Ordre home : Hero → Univers → **Le jeu** → **Ascension** → Communauté.
+  - i18n : namespaces `home.game.*` et `home.ascension.*` ajoutés (FR + EN),
+    contenu repris fidèlement du proto.
+  - Tests : `LeJeuSection.spec`, `AscensionSection.spec`, + assertion d'ordre des
+    sections dans `index.spec`. 56 tests verts, lint + build SSG OK.
+  - **Nav** : ancres `#jeu` et `#ascension` ajoutées à `AppNav` **et** au footer
+    (clés `nav.jeu`/`nav.ascension` FR+EN), ordre Univers → Le jeu → Ascension →
+    Gameplay → Communauté. `AppFooter.spec` mis à jour (liste des liens).
+    NB : `AppNav` masque toujours les liens < 1180px (pas de menu burger — gap
+    mobile préexistant, hors scope).
+
 ## Décisions en attente
 
 - **Intégration maquette Thierry** (UX/design) — en cours côté Thierry. Le

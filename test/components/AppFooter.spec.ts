@@ -20,6 +20,8 @@ describe('AppFooter', () => {
     expect(internal.map((l) => l.props('to'))).toEqual([
       '/',
       '/#univers',
+      '/#jeu',
+      '/#ascension',
       '/gameplay',
       '/#communaute',
     ])
