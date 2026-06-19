@@ -20,7 +20,6 @@
     "cta_ghost": "Development log",
     "scroll": "Scroll down"
   },
-  "coming_soon": "The official site is being built",
   "home": {
     "presentation": {
       "title": "Presentation",
@@ -44,7 +43,6 @@
       }
     },
     "community": {
-      "title": "Community",
       "discord": {
         "title": "Official Discord",
         "cta": "Join the Discord"
@@ -52,9 +50,6 @@
       "music": {
         "title": "Music"
       }
-    },
-    "tools": {
-      "title": "Tools"
     }
   },
   "tools": {

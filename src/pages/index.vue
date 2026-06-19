@@ -1,7 +1,6 @@
 <!--
-  La home porte le hero v7 plein écran avec sa propre nav fixe transparente.
-  Elle sort donc du layout `default` (AppHeader/AppNav/AppFooter) via le layout
-  `blank`. Les autres pages (community, gameplay, tools) restent sur `default`.
+  La home porte le hero v7 plein écran. Avec /gameplay, elle utilise le layout
+  `blank` (AppNav fixe transparente + AppFooter), seul layout du site.
 -->
 <route>
 {

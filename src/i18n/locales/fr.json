@@ -20,7 +20,6 @@
     "cta_ghost": "Carnet de développement",
     "scroll": "Faire défiler"
   },
-  "coming_soon": "Le site officiel est en cours de construction",
   "home": {
     "presentation": {
       "title": "Présentation",
@@ -44,7 +43,6 @@
       }
     },
     "community": {
-      "title": "Communauté",
       "discord": {
         "title": "Discord officiel",
         "cta": "Rejoindre le Discord"
@@ -52,9 +50,6 @@
       "music": {
         "title": "Musiques"
       }
-    },
-    "tools": {
-      "title": "Outils"
     }
   },
   "tools": {

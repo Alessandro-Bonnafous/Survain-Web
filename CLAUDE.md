@@ -241,6 +241,22 @@ npm run format   # Prettier
   - Tests : `AppFooter.spec` ajouté. 54 tests verts, lint + build SSG OK.
   - **Reste du Sprint B** : section/onglet Ascension, migration éventuelle du reste.
 
+- **2026-06-19 — Sprint B (5/n) : nettoyage du code legacy non rendu**
+  - Suppression du code mort hérité de l'ancienne DA (audit : plus rien ne
+    rendait le layout `default`). Supprimés : `layouts/default.vue`,
+    `components/AppHeader.vue`, `components/AppNav.vue` (racine),
+    `components/AppFooter.vue` (racine), `components/LocaleSwitcher.vue` (la
+    version vivante est `ui/LangSwitcher.vue`), et leurs specs orphelines
+    (`AppNav.spec`, `LocaleSwitcher.spec`). Le site n'a plus qu'**un seul
+    layout** (`blank`) ; `components/layout/` (AppNav + AppFooter) est l'actif.
+  - Clés i18n orphelines retirées (`fr.json` + `en.json`) : `coming_soon`
+    (relique du « coming soon »), `pages.community.title` (page supprimée),
+    `pages.tools.title` (page supprimée). Le namespace **racine** `tools.*`
+    (craft tree, utilisé par `CraftTree`) est conservé — à ne pas confondre.
+  - `useLog` **conservé** (utilitaire imposé par la convention « pas de
+    `console.*` », pas encore mobilisé).
+  - 48 tests verts (−6 des 2 specs supprimées), lint + build SSG OK.
+
 ## Décisions en attente
 
 - **Intégration maquette Thierry** (UX/design) — en cours côté Thierry. Le
