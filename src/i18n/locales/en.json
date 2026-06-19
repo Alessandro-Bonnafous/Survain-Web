@@ -51,15 +51,6 @@
       },
       "music": {
         "title": "Music"
-      },
-      "soon": {
-        "title": "Coming soon",
-        "news": "News",
-        "forums": "Forums",
-        "events": "Events",
-        "hallOfFame": "Hall of Fame",
-        "support": "Support",
-        "partners": "Partners"
       }
     },
     "tools": {

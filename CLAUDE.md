@@ -225,6 +225,22 @@ npm run format   # Prettier
   - **Reste du Sprint B** : section/onglet Ascension, **Footer** (absent du site
     depuis le retrait de `/community`), migration éventuelle du reste.
 
+- **2026-06-19 — Sprint B (4/n) : Footer global + retrait du « À venir »**
+  - **Retrait de la grille « À venir »** de `CommunauteSection.vue` (validé par
+    Aless après test) : bloc template `comm__soon-wrap`, const `soonKeys` et
+    styles `.comm__soon*`/`.comm__heading--center` supprimés ; clés i18n
+    `community.soon.*` retirées de `fr.json`/`en.json` ; assertion correspondante
+    retirée de `CommunauteSection.spec`. La section ne garde que Discord + Musiques.
+  - **Nouveau Footer** `components/layout/AppFooter.vue` (nouvelle DA gravée :
+    filet doré haut, wordmark, liens `RouterLink` `/#univers` `/gameplay`
+    `/#communaute`, lien Discord externe via `EXTERNAL_LINKS`, mention de droits
+    Cinzel). Ajouté au layout **`blank`** (partagé home + gameplay) → comble
+    l'absence de footer depuis le retrait de `/community`.
+  - L'ancien `components/AppFooter.vue` (layout `default` inerte) est conservé
+    mais non rendu ; le nouveau vit sous `layout/` avec `AppNav`.
+  - Tests : `AppFooter.spec` ajouté. 54 tests verts, lint + build SSG OK.
+  - **Reste du Sprint B** : section/onglet Ascension, migration éventuelle du reste.
+
 ## Décisions en attente
 
 - **Intégration maquette Thierry** (UX/design) — en cours côté Thierry. Le

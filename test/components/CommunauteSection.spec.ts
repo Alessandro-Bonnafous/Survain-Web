@@ -26,10 +26,6 @@ describe('CommunauteSection', () => {
     expect(mountSection().findAll('.music-player__track')).toHaveLength(3)
   })
 
-  it('liste les 6 sections à venir', () => {
-    expect(mountSection().findAll('.comm__soon-item')).toHaveLength(6)
-  })
-
   it('suit la locale active', () => {
     expect(mountSection('en').text()).toContain('Official Discord')
   })

@@ -23,16 +23,6 @@
           <MusicPlayer :tracks="MUSIC_TRACKS" />
         </div>
       </div>
-
-      <!-- À venir -->
-      <div class="comm__soon-wrap">
-        <h3 class="comm__heading comm__heading--center">{{ t('pages.community.soon.title') }}</h3>
-        <ul class="comm__soon">
-          <li v-for="key in soonKeys" :key="key" class="comm__soon-item">
-            {{ t(`pages.community.soon.${key}`) }}
-          </li>
-        </ul>
-      </div>
     </div>
   </section>
 </template>
@@ -45,9 +35,6 @@ import MusicPlayer from '@/components/community/MusicPlayer.vue'
 import discordLogo from '@/assets/images/discord-logo-transparent.png'
 
 const { t } = useI18n()
-
-// Sections futures (structure prête, contenu à venir).
-const soonKeys = ['news', 'forums', 'events', 'hallOfFame', 'support', 'partners'] as const
 </script>
 
 <style scoped>
@@ -119,9 +106,6 @@ const soonKeys = ['news', 'forums', 'events', 'hallOfFame', 'support', 'partners
   color: var(--color-gold);
   margin: 0 0 1.4rem;
 }
-.comm__heading--center {
-  text-align: center;
-}
 
 .comm__discord {
   display: flex;
@@ -159,28 +143,6 @@ const soonKeys = ['news', 'forums', 'events', 'hallOfFame', 'support', 'partners
 .comm__discord:hover .comm__discord-cta {
   background: rgba(202, 164, 90, 0.16);
   color: var(--color-gold-light);
-}
-
-.comm__soon-wrap {
-  margin-top: 3rem;
-}
-.comm__soon {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 0.8rem;
-  list-style: none;
-  margin: 0;
-  padding: 0;
-}
-.comm__soon-item {
-  font-family: var(--font-display);
-  text-transform: uppercase;
-  letter-spacing: 0.1em;
-  font-size: 0.68rem;
-  color: var(--ash);
-  border: 1px dashed rgba(202, 164, 90, 0.3);
-  padding: 0.6rem 1.1rem;
 }
 
 @media (max-width: 760px) {
