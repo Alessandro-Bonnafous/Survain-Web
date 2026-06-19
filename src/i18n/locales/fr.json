@@ -7,6 +7,8 @@
     "home": "Accueil",
     "gameplay": "Gameplay",
     "univers": "Univers",
+    "jeu": "Le jeu",
+    "ascension": "Ascension",
     "community": "Communauté",
     "communaute": "Communauté",
     "tools": "Outils",
@@ -20,7 +22,6 @@
     "cta_ghost": "Carnet de développement",
     "scroll": "Faire défiler"
   },
-  "coming_soon": "Le site officiel est en cours de construction",
   "home": {
     "presentation": {
       "title": "Présentation",
@@ -33,6 +34,52 @@
     "cta": {
       "trailer": "Voir le trailer",
       "discord": "Rejoindre le Discord"
+    },
+    "game": {
+      "eyebrow": "Le jeu",
+      "title": "De la première braise au trône du Royaume",
+      "lead": "Seul dans une contrée sauvage, vous bâtissez un village, ralliez des âmes à votre cause et gravissez les échelons d'un monde féodal vivant — jusqu'à peser sur le destin d'un Royaume entier, sous le regard des dieux du Nord.",
+      "pillars": {
+        "survival": {
+          "title": "Survie, Exploration & Bâtisse",
+          "text": "Quatre biomes, des saisons rudes, des zones sauvages où le danger garde le meilleur loot. Récoltez, craftez, bâtissez votre foyer."
+        },
+        "politics": {
+          "title": "Politique, Économie & Conquête",
+          "text": "Colon, Baron, Seigneur, Roi : une montée en pouvoir organique. Taxes, routes commerciales, prises de châteaux — batailles équilibrées, sans zerg."
+        },
+        "gods": {
+          "title": "Faveur des Dieux",
+          "text": "Choisissez votre panthéon, déposez vos offrandes, déclenchez rituels et bénédictions. Les guerres de religion font rage pour les reliques sacrées."
+        }
+      }
+    },
+    "ascension": {
+      "eyebrow": "Progression territoriale",
+      "title": "L'Ascension",
+      "lead": "Quatre échelons, du foyer solitaire à la guerre des Régions. Chaque palier ouvre de nouvelles mécaniques — et de nouveaux rivaux.",
+      "steps": {
+        "land": {
+          "name": "Contrée",
+          "tag": "Solo · PvE",
+          "text": "Votre terre, votre village, vos PNJ. Survie, construction et zones sauvages à explorer."
+        },
+        "province": {
+          "name": "Province",
+          "tag": "6 contrées · Coop",
+          "text": "Union sous un Baron : marché central, sécurité partagée, premières missions coopératives."
+        },
+        "region": {
+          "name": "Région",
+          "tag": "10 provinces · Conquête",
+          "text": "Prise de château contre le PvE organisé. Un Seigneur joueur émerge et distribue les rôles."
+        },
+        "kingdom": {
+          "name": "Royaume",
+          "tag": "10 régions · PvP",
+          "text": "Guerres interrégionales, donjons, factions et capitale vivante sous l'autorité du Roi."
+        }
+      }
     }
   },
   "pages": {
@@ -44,26 +91,13 @@
       }
     },
     "community": {
-      "title": "Communauté",
       "discord": {
         "title": "Discord officiel",
         "cta": "Rejoindre le Discord"
       },
       "music": {
         "title": "Musiques"
-      },
-      "soon": {
-        "title": "À venir",
-        "news": "Actualités",
-        "forums": "Forums",
-        "events": "Événements",
-        "hallOfFame": "Hall of Fame",
-        "support": "Support",
-        "partners": "Partenaires"
       }
-    },
-    "tools": {
-      "title": "Outils"
     }
   },
   "tools": {

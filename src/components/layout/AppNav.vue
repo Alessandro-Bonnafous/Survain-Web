@@ -14,6 +14,12 @@
           <RouterLink to="/#univers">{{ t('nav.univers') }}</RouterLink>
         </li>
         <li>
+          <RouterLink to="/#jeu">{{ t('nav.jeu') }}</RouterLink>
+        </li>
+        <li>
+          <RouterLink to="/#ascension">{{ t('nav.ascension') }}</RouterLink>
+        </li>
+        <li>
           <RouterLink to="/gameplay">{{ t('nav.gameplay') }}</RouterLink>
         </li>
         <li>
