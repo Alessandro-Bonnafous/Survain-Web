@@ -174,6 +174,7 @@ export const gameplayStructure: GameplayContent = [
         blocks: [
           { kind: 'paragraph', textKey: 'gameplay.progression.regions.p0' },
           { kind: 'paragraph', textKey: 'gameplay.progression.regions.p1' },
+          { kind: 'paragraph', textKey: 'gameplay.progression.regions.p2' },
           { kind: 'image', imageId: 'regions-pvp', altKey: 'gameplay.progression.regions.imgAlt' },
         ],
       },
@@ -205,6 +206,16 @@ export const gameplayStructure: GameplayContent = [
           },
           { kind: 'paragraph', textKey: 'gameplay.progression.extensionPvp.p3' },
           { kind: 'paragraph', textKey: 'gameplay.progression.extensionPvp.p4' },
+          { kind: 'paragraph', textKey: 'gameplay.progression.extensionPvp.p5' },
+          {
+            kind: 'list',
+            items: [
+              { textKey: 'gameplay.progression.extensionPvp.powers.i0' },
+              { textKey: 'gameplay.progression.extensionPvp.powers.i1' },
+              { textKey: 'gameplay.progression.extensionPvp.powers.i2' },
+              { textKey: 'gameplay.progression.extensionPvp.powers.i3' },
+            ],
+          },
         ],
       },
     ],

@@ -107,9 +107,10 @@
     },
     "regions": {
       "title": "Les Régions",
-      "summary": "Les Provinces s'unissent pour renverser le Seigneur PNJ et accéder au monde ouvert du Royaume.",
+      "summary": "Les Provinces s'unissent en Région : bibliothèque au cœur de la connaissance, chercheurs financés par les dîmes et coffre du Seigneur convoité.",
       "p0": "A travers son bureau politique, le Baron décide de rejoindre une Région, et s'associe à 9 autres Provinces.",
-      "p1": "La priorité sera de renverser le Seigneur PNJ. La mobilisation générale des Colons, une bonne organisation et un équipement T3 seront nécessaire pour affronter les mercenaires du Seigneur payés grassement avec les dîmes.",
+      "p1": "La bibliothèque est le cœur de la connaissance au sein de chaque Région. Financer les chercheurs PNJ nécessite des fonds importants qui proviennent des dîmes. La qualité des manuels (transformation des recettes apprises) dépend du haut niveau de sa structure ; par exemple une recette T3 de Lame de coutelas connue à 93% deviendra un manuel à 84% avec une bibliothèque de niveau 90%.",
+      "p2": "L'or nécessaire au fonctionnement de la Région est détenu dans le coffre du Seigneur, qui sera la convoitise des autres Régions.",
       "imgAlt": "Carte des régions et zones PvP"
     },
     "extensionPvp": {
@@ -130,7 +131,14 @@
       "p2": "A la périphérie de la capitale, les 8 temples nordiques, qui s'affrontent à distance pour la possession des reliques, batailles auxquelles les Colons pourront prendre part.",
       "imgAlt": "Panorama PvP du Royaume",
       "p3": "A découvrir aussi, les Wild Caves que les explorateurs découvrent et qui sont le lieu d'affrontement pour convoiter les précieux organes des mobs.",
-      "p4": "Et enfin les batailles épiques de prise de château dans les affrontements entre les régions."
+      "p4": "Et enfin les batailles épiques de prise de château dans les affrontements entre les régions.",
+      "p5": "Les centres de pouvoirs se répartissent de la façon suivante :",
+      "powers": {
+        "i0": "La Région détient la connaissance à travers sa bibliothèque.",
+        "i1": "Le Temple Divin apporte la foi cruciale pour attirer des villageois.",
+        "i2": "La Capitale est le poumon économique avec le franchising de ses commerces.",
+        "i3": "Les Explorations permettent d'obtenir les organes nécessaires aux bénédictions."
+      }
     }
   },
   "craft": {
