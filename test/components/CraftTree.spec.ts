@@ -28,11 +28,18 @@ describe('CraftTree', () => {
     expect(wrapper.findAll('th')).toHaveLength(4)
   })
 
-  it('affiche biome + tier pour les armes (9 colonnes)', async () => {
+  it('affiche biome + tier pour les armes (8 colonnes, sans « Qté totale »)', async () => {
     const wrapper = mountCraft()
     await wrapper.findAll('.craft__tab')[3].trigger('click')
     expect(wrapper.findAll('.craft__control')).toHaveLength(2)
-    expect(wrapper.findAll('th')).toHaveLength(9)
+    expect(wrapper.findAll('th')).toHaveLength(8)
+  })
+
+  it('armures : 8 colonnes (sans « Qté base »/« Qté biome suppl. ») et sans « bonus »', async () => {
+    const wrapper = mountCraft()
+    await wrapper.findAll('.craft__tab')[4].trigger('click')
+    expect(wrapper.findAll('th')).toHaveLength(8)
+    expect(wrapper.text()).not.toContain('bonus')
   })
 
   it('suit la locale active', () => {

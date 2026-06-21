@@ -34,6 +34,13 @@ describe('AppFooter', () => {
     expect(link.attributes('rel')).toBe('noopener')
   })
 
+  it('expose le YouTube (trailer) à côté du Discord (nouvel onglet)', () => {
+    const link = mountFooter().get('.foot__social a[aria-label="YouTube"]')
+    expect(link.attributes('href')).toBe(EXTERNAL_LINKS.trailer)
+    expect(link.attributes('target')).toBe('_blank')
+    expect(link.attributes('rel')).toBe('noopener')
+  })
+
   it('affiche la mention de droits selon la locale', () => {
     expect(mountFooter('en').text()).toContain('All rights reserved')
   })

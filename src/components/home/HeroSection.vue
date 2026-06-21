@@ -19,7 +19,12 @@
         <p class="hero__lede">{{ t('hero.lede') }}</p>
         <div class="hero__ctas">
           <Btn variant="primary">{{ t('hero.cta_primary') }}</Btn>
-          <Btn variant="ghost">{{ t('hero.cta_ghost') }}</Btn>
+          <span class="hero__cta-wip">
+            <Btn variant="ghost" :aria-describedby="wipTooltipId">{{ t('hero.cta_ghost') }}</Btn>
+            <span :id="wipTooltipId" class="hero__tooltip" role="tooltip">
+              {{ t('hero.cta_ghost_tooltip') }}
+            </span>
+          </span>
         </div>
       </div>
     </div>
@@ -42,6 +47,10 @@ import { useEmbers } from '@/composables/useEmbers'
 const { t } = useI18n()
 const embersRef = ref<HTMLElement | null>(null)
 useEmbers(embersRef)
+
+// Id stable pour relier le bouton « Carnet de développement » à son infobulle
+// (aria-describedby) — la fonctionnalité n'est pas encore disponible.
+const wipTooltipId = 'hero-cta-ghost-tooltip'
 </script>
 
 <style scoped>
@@ -207,6 +216,40 @@ useEmbers(embersRef)
   display: flex;
   gap: 1.1rem;
   flex-wrap: wrap;
+}
+
+/* Infobulle « Développement en cours » sur le bouton Carnet de développement
+   (fonctionnalité pas encore disponible) — apparaît au survol et au focus. */
+.hero__cta-wip {
+  position: relative;
+  display: inline-flex;
+}
+.hero__tooltip {
+  position: absolute;
+  bottom: calc(100% + 0.7rem);
+  left: 50%;
+  transform: translateX(-50%) translateY(4px);
+  white-space: nowrap;
+  font-family: var(--font-display);
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  font-size: 0.64rem;
+  font-weight: 600;
+  color: var(--color-gold-light);
+  background: rgba(7, 8, 10, 0.96);
+  border: 1px solid rgba(202, 164, 90, 0.5);
+  padding: 0.5rem 0.85rem;
+  clip-path: polygon(7px 0, 100% 0, 100% calc(100% - 7px), calc(100% - 7px) 100%, 0 100%, 0 7px);
+  opacity: 0;
+  pointer-events: none;
+  transition:
+    opacity 0.25s var(--ease-theatrical),
+    transform 0.25s var(--ease-theatrical);
+}
+.hero__cta-wip:hover .hero__tooltip,
+.hero__cta-wip:focus-within .hero__tooltip {
+  opacity: 1;
+  transform: translateX(-50%) translateY(0);
 }
 
 .hero__scroll {

@@ -101,6 +101,15 @@ function translateCost(raw: string): string {
     .join(' / ')
 }
 
+/**
+ * Retire le mot « bonus » des cellules de coût (« (Plaines bonus) » →
+ * « (Plaines) »). Demandé par le PO sur le tableau des armures : le biome
+ * supplémentaire reste indiqué entre parenthèses, sans la mention « bonus ».
+ */
+function stripBonus(value: string): string {
+  return value.replace(/\s+bonus\)/g, ')')
+}
+
 const SECTIONS = ['recolte', 'constructions', 'processing', 'weapons', 'armors'] as const
 type Section = (typeof SECTIONS)[number]
 
@@ -166,7 +175,6 @@ const table = computed<TableData>(() => {
           t(`${h}.category`),
           t(`${h}.role`),
           t(`${h}.weapon`),
-          t(`${h}.qty`),
           t(`${h}.wood`),
           t(`${h}.ore`),
           t(`${h}.fiber`),
@@ -177,7 +185,6 @@ const table = computed<TableData>(() => {
           tv(w.Catégorie),
           tv(w.Rôle),
           tvi(w.Arme),
-          w['Qté Totale'],
           translateCost(w['Bois craft']),
           translateCost(w['Minerai craft']),
           translateCost(w['Fibres craft']),
@@ -193,8 +200,6 @@ const table = computed<TableData>(() => {
           t(`${h}.type`),
           t(`${h}.resistance`),
           t(`${h}.armor`),
-          t(`${h}.qtyBase`),
-          t(`${h}.qtyBonus`),
           t(`${h}.wood`),
           t(`${h}.ore`),
           t(`${h}.fiber`),
@@ -205,13 +210,11 @@ const table = computed<TableData>(() => {
           tv(a.Type),
           tv(a.Résistance),
           tvi(a.Armure),
-          a['Qté base'],
-          a['Qté biome supplémentaire'],
-          translateCost(a['Bois craft']),
-          translateCost(a['Minerai craft']),
-          translateCost(a['Fibres craft']),
-          translateCost(a['Marines craft']),
-          translateCost(a['Animal craft']),
+          stripBonus(translateCost(a['Bois craft'])),
+          stripBonus(translateCost(a['Minerai craft'])),
+          stripBonus(translateCost(a['Fibres craft'])),
+          stripBonus(translateCost(a['Marines craft'])),
+          stripBonus(translateCost(a['Animal craft'])),
         ]),
       }
     }
@@ -220,6 +223,17 @@ const table = computed<TableData>(() => {
 </script>
 
 <style scoped>
+/* L'arbre de craft sort de la colonne de contenu (max 1180px) pour offrir au
+   tableau une largeur confortable (demande PO : « agrandir le tableau »). Le
+   breakout est centré sur le viewport ; InfoTable gère le scroll horizontal
+   au-delà. */
+.craft {
+  width: min(1500px, 94vw);
+  position: relative;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
 .craft__intro {
   font-family: var(--font-body);
   color: var(--ash);
