@@ -107,7 +107,7 @@
     },
     "regions": {
       "title": "The Regions",
-      "summary": "Provinces unite to overthrow the NPC Lord and reach the open world of the Kingdom.",
+      "summary": "Provinces unite into a Region: the library at the heart of knowledge, researchers funded by the tithes and the Lord's coveted chest.",
       "p0": "Through their political office, the Baron decides to join a Region and allies with 9 other Provinces.",
       "p1": "The library is the heart of knowledge within each Region. Funding the NPC researchers requires substantial funds that come from the tithes. The quality of the manuals (conversion of learned recipes) depends on the high level of its structure; for example a T3 Cleaver Blade recipe known at 93% will become an 84% manual with a level 90% library.",
       "p2": "The gold needed to run the Region is held in the Lord's chest, which will be coveted by the other Regions.",
