@@ -18,23 +18,25 @@
     </div>
 
     <div class="craft__controls">
-      <label v-if="perBiome" class="craft__control">
-        <span>{{ t('tools.biomeLabel') }}</span>
-        <select v-model="biomeId" class="craft__select">
-          <option v-for="biome in BIOMES" :key="biome.id" :value="biome.id">
-            {{ t(`tools.biomes.${biome.id}`) }}
-          </option>
-        </select>
-      </label>
+      <div v-if="perBiome" class="craft__control">
+        <span class="craft__control-label">{{ t('tools.biomeLabel') }}</span>
+        <SelectMenu
+          :model-value="biomeId"
+          :options="biomeOptions"
+          :aria-label="t('tools.biomeLabel')"
+          @update:model-value="biomeId = $event as BiomeId"
+        />
+      </div>
 
-      <label v-if="perTier" class="craft__control">
-        <span>{{ t('tools.tierLabel') }}</span>
-        <select v-model="tier" class="craft__select">
-          <option v-for="tierOption in TIERS" :key="tierOption" :value="tierOption">
-            {{ t(`tools.tiers.${tierOption}`) }}
-          </option>
-        </select>
-      </label>
+      <div v-if="perTier" class="craft__control">
+        <span class="craft__control-label">{{ t('tools.tierLabel') }}</span>
+        <SelectMenu
+          :model-value="tier"
+          :options="tierOptions"
+          :aria-label="t('tools.tierLabel')"
+          @update:model-value="tier = $event as Tier"
+        />
+      </div>
     </div>
 
     <InfoTable :headers="table.headers" :rows="table.rows" />
@@ -45,6 +47,7 @@
 import { computed, ref } from 'vue'
 import { useI18n } from 'vue-i18n'
 import InfoTable from '@/components/ui/InfoTable.vue'
+import SelectMenu from '@/components/ui/SelectMenu.vue'
 import {
   BIOMES,
   TIERS,
@@ -116,6 +119,14 @@ type Section = (typeof SECTIONS)[number]
 const activeSection = ref<Section>('recolte')
 const biomeId = ref<BiomeId>('foret')
 const tier = ref<Tier>('T1')
+
+// Options des dropdowns (libellés traduits, recalculés au changement de locale).
+const biomeOptions = computed(() =>
+  BIOMES.map((biome) => ({ value: biome.id, label: t(`tools.biomes.${biome.id}`) })),
+)
+const tierOptions = computed(() =>
+  TIERS.map((tierOption) => ({ value: tierOption, label: t(`tools.tiers.${tierOption}`) })),
+)
 
 // Récolte/armes/armures sont par biome ; armes/armures ont aussi un tier.
 const perBiome = computed(() => ['recolte', 'weapons', 'armors'].includes(activeSection.value))
@@ -285,52 +296,12 @@ const table = computed<TableData>(() => {
   display: flex;
   flex-direction: column;
   gap: 0.4rem;
+}
+.craft__control-label {
   font-family: var(--font-display);
   text-transform: uppercase;
   letter-spacing: 0.1em;
   font-size: 0.68rem;
   color: var(--color-gold);
-}
-.craft__select {
-  font-family: var(--font-body);
-  text-transform: none;
-  letter-spacing: normal;
-  font-size: 0.95rem;
-  color: var(--parchment);
-  /* Chevron doré custom (même tracé que le LangSwitcher) — le natif est masqué
-     via appearance:none ; color-scheme:dark assombrit la liste déroulante. */
-  background-color: rgba(7, 8, 10, 0.9);
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 12 8' fill='none' stroke='%23caa45a' stroke-width='1.6'%3E%3Cpath d='M1 1.5 L6 6.5 L11 1.5'/%3E%3C/svg%3E");
-  background-repeat: no-repeat;
-  background-position: right 0.85rem center;
-  background-size: 0.7rem;
-  border: 1px solid rgba(202, 164, 90, 0.4);
-  padding: 0.6rem 2.4rem 0.6rem 0.85rem;
-  min-width: 13rem;
-  cursor: pointer;
-  appearance: none;
-  -webkit-appearance: none;
-  color-scheme: dark;
-  clip-path: polygon(8px 0, 100% 0, 100% calc(100% - 8px), calc(100% - 8px) 100%, 0 100%, 0 8px);
-  transition:
-    border-color 0.25s,
-    background-color 0.25s,
-    color 0.25s;
-}
-.craft__select:hover {
-  border-color: rgba(202, 164, 90, 0.7);
-  background-color: rgba(202, 164, 90, 0.07);
-  color: var(--color-gold-light);
-}
-/* Couleurs explicites des options : sinon elles héritent du `color` du select
-   (doré clair au survol) et deviennent illisibles sur le surlignage clair du
-   menu déroulant natif. */
-.craft__select option {
-  background-color: #0c0d10;
-  color: var(--parchment);
-}
-.craft__select:focus-visible {
-  outline: 2px solid var(--color-gold-light);
-  outline-offset: 2px;
 }
 </style>
