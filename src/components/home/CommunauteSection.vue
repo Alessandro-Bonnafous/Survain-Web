@@ -15,6 +15,25 @@
             <img :src="discordLogo" alt="Discord" class="comm__discord-logo" width="160" />
             <span class="comm__discord-cta">{{ t('pages.community.discord.cta') }}</span>
           </a>
+          <a
+            class="comm__youtube"
+            :href="EXTERNAL_LINKS.trailer"
+            target="_blank"
+            rel="noopener"
+            aria-label="YouTube"
+          >
+            <svg
+              class="comm__youtube-icon"
+              viewBox="0 0 24 24"
+              fill="currentColor"
+              aria-hidden="true"
+            >
+              <path
+                d="M23.5 6.2a3.02 3.02 0 0 0-2.12-2.14C19.5 3.55 12 3.55 12 3.55s-7.5 0-9.38.51A3.02 3.02 0 0 0 .5 6.2 31.6 31.6 0 0 0 0 12a31.6 31.6 0 0 0 .5 5.8 3.02 3.02 0 0 0 2.12 2.14c1.88.51 9.38.51 9.38.51s7.5 0 9.38-.51a3.02 3.02 0 0 0 2.12-2.14A31.6 31.6 0 0 0 24 12a31.6 31.6 0 0 0-.5-5.8zM9.6 15.6V8.4l6.27 3.6L9.6 15.6z"
+              />
+            </svg>
+            <span>{{ t('home.cta.trailer') }}</span>
+          </a>
         </div>
 
         <!-- Musiques -->
@@ -143,6 +162,34 @@ const { t } = useI18n()
 .comm__discord:hover .comm__discord-cta {
   background: rgba(202, 164, 90, 0.16);
   color: var(--color-gold-light);
+}
+
+.comm__youtube {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.6rem;
+  margin-top: 1.4rem;
+  align-self: center;
+  font-family: var(--font-display);
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+  font-size: 0.7rem;
+  font-weight: 600;
+  color: var(--parchment);
+  text-decoration: none;
+  opacity: 0.85;
+  transition:
+    color 0.3s,
+    opacity 0.3s;
+}
+.comm__youtube:hover {
+  color: var(--color-gold-light);
+  opacity: 1;
+}
+.comm__youtube-icon {
+  width: 20px;
+  height: 20px;
 }
 
 @media (max-width: 760px) {

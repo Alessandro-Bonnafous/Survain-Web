@@ -18,23 +18,25 @@
     </div>
 
     <div class="craft__controls">
-      <label v-if="perBiome" class="craft__control">
-        <span>{{ t('tools.biomeLabel') }}</span>
-        <select v-model="biomeId" class="craft__select">
-          <option v-for="biome in BIOMES" :key="biome.id" :value="biome.id">
-            {{ t(`tools.biomes.${biome.id}`) }}
-          </option>
-        </select>
-      </label>
+      <div v-if="perBiome" class="craft__control">
+        <span class="craft__control-label">{{ t('tools.biomeLabel') }}</span>
+        <SelectMenu
+          :model-value="biomeId"
+          :options="biomeOptions"
+          :aria-label="t('tools.biomeLabel')"
+          @update:model-value="biomeId = $event as BiomeId"
+        />
+      </div>
 
-      <label v-if="perTier" class="craft__control">
-        <span>{{ t('tools.tierLabel') }}</span>
-        <select v-model="tier" class="craft__select">
-          <option v-for="tierOption in TIERS" :key="tierOption" :value="tierOption">
-            {{ t(`tools.tiers.${tierOption}`) }}
-          </option>
-        </select>
-      </label>
+      <div v-if="perTier" class="craft__control">
+        <span class="craft__control-label">{{ t('tools.tierLabel') }}</span>
+        <SelectMenu
+          :model-value="tier"
+          :options="tierOptions"
+          :aria-label="t('tools.tierLabel')"
+          @update:model-value="tier = $event as Tier"
+        />
+      </div>
     </div>
 
     <InfoTable :headers="table.headers" :rows="table.rows" />
@@ -45,6 +47,7 @@
 import { computed, ref } from 'vue'
 import { useI18n } from 'vue-i18n'
 import InfoTable from '@/components/ui/InfoTable.vue'
+import SelectMenu from '@/components/ui/SelectMenu.vue'
 import {
   BIOMES,
   TIERS,
@@ -101,12 +104,29 @@ function translateCost(raw: string): string {
     .join(' / ')
 }
 
+/**
+ * Retire le mot « bonus » des cellules de coût (« (Plaines bonus) » →
+ * « (Plaines) »). Demandé par le PO sur le tableau des armures : le biome
+ * supplémentaire reste indiqué entre parenthèses, sans la mention « bonus ».
+ */
+function stripBonus(value: string): string {
+  return value.replace(/\s+bonus\)/g, ')')
+}
+
 const SECTIONS = ['recolte', 'constructions', 'processing', 'weapons', 'armors'] as const
 type Section = (typeof SECTIONS)[number]
 
 const activeSection = ref<Section>('recolte')
 const biomeId = ref<BiomeId>('foret')
 const tier = ref<Tier>('T1')
+
+// Options des dropdowns (libellés traduits, recalculés au changement de locale).
+const biomeOptions = computed(() =>
+  BIOMES.map((biome) => ({ value: biome.id, label: t(`tools.biomes.${biome.id}`) })),
+)
+const tierOptions = computed(() =>
+  TIERS.map((tierOption) => ({ value: tierOption, label: t(`tools.tiers.${tierOption}`) })),
+)
 
 // Récolte/armes/armures sont par biome ; armes/armures ont aussi un tier.
 const perBiome = computed(() => ['recolte', 'weapons', 'armors'].includes(activeSection.value))
@@ -166,7 +186,6 @@ const table = computed<TableData>(() => {
           t(`${h}.category`),
           t(`${h}.role`),
           t(`${h}.weapon`),
-          t(`${h}.qty`),
           t(`${h}.wood`),
           t(`${h}.ore`),
           t(`${h}.fiber`),
@@ -177,7 +196,6 @@ const table = computed<TableData>(() => {
           tv(w.Catégorie),
           tv(w.Rôle),
           tvi(w.Arme),
-          w['Qté Totale'],
           translateCost(w['Bois craft']),
           translateCost(w['Minerai craft']),
           translateCost(w['Fibres craft']),
@@ -193,8 +211,6 @@ const table = computed<TableData>(() => {
           t(`${h}.type`),
           t(`${h}.resistance`),
           t(`${h}.armor`),
-          t(`${h}.qtyBase`),
-          t(`${h}.qtyBonus`),
           t(`${h}.wood`),
           t(`${h}.ore`),
           t(`${h}.fiber`),
@@ -205,13 +221,11 @@ const table = computed<TableData>(() => {
           tv(a.Type),
           tv(a.Résistance),
           tvi(a.Armure),
-          a['Qté base'],
-          a['Qté biome supplémentaire'],
-          translateCost(a['Bois craft']),
-          translateCost(a['Minerai craft']),
-          translateCost(a['Fibres craft']),
-          translateCost(a['Marines craft']),
-          translateCost(a['Animal craft']),
+          stripBonus(translateCost(a['Bois craft'])),
+          stripBonus(translateCost(a['Minerai craft'])),
+          stripBonus(translateCost(a['Fibres craft'])),
+          stripBonus(translateCost(a['Marines craft'])),
+          stripBonus(translateCost(a['Animal craft'])),
         ]),
       }
     }
@@ -220,6 +234,17 @@ const table = computed<TableData>(() => {
 </script>
 
 <style scoped>
+/* L'arbre de craft sort de la colonne de contenu (max 1180px) pour offrir au
+   tableau une largeur confortable (demande PO : « agrandir le tableau »). Le
+   breakout est centré sur le viewport ; InfoTable gère le scroll horizontal
+   au-delà. */
+.craft {
+  width: min(1500px, 94vw);
+  position: relative;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
 .craft__intro {
   font-family: var(--font-body);
   color: var(--ash);
@@ -271,25 +296,12 @@ const table = computed<TableData>(() => {
   display: flex;
   flex-direction: column;
   gap: 0.4rem;
+}
+.craft__control-label {
   font-family: var(--font-display);
   text-transform: uppercase;
   letter-spacing: 0.1em;
   font-size: 0.68rem;
   color: var(--color-gold);
-}
-.craft__select {
-  font-family: var(--font-body);
-  text-transform: none;
-  letter-spacing: normal;
-  font-size: 0.95rem;
-  background: rgba(7, 8, 10, 0.9);
-  color: var(--parchment);
-  border: 1px solid rgba(202, 164, 90, 0.4);
-  padding: 0.5rem 0.7rem;
-  min-width: 13rem;
-}
-.craft__select:focus-visible {
-  outline: 2px solid var(--color-gold-light);
-  outline-offset: 2px;
 }
 </style>

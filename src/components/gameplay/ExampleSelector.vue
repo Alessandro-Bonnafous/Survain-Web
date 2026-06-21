@@ -1,11 +1,14 @@
 <template>
   <div class="example-selector">
-    <label class="example-selector__label">
+    <div class="example-selector__label">
       <span>{{ label }}</span>
-      <select v-model.number="selected" class="example-selector__select">
-        <option v-for="(option, i) in options" :key="i" :value="i">{{ option.label }}</option>
-      </select>
-    </label>
+      <SelectMenu
+        :model-value="selected"
+        :options="selectOptions"
+        :aria-label="label"
+        @update:model-value="selected = Number($event)"
+      />
+    </div>
 
     <div class="example-selector__panel">
       <!-- Le rendu des blocs de l'option est délégué au parent (slot scopé),
@@ -16,12 +19,17 @@
 </template>
 
 <script setup lang="ts">
-import { ref } from 'vue'
+import { computed, ref } from 'vue'
+import SelectMenu from '@/components/ui/SelectMenu.vue'
 import type { ResolvedSelectorOption } from '@/content/gameplay/types'
 
-defineProps<{ label: string; options: ResolvedSelectorOption[] }>()
+const props = defineProps<{ label: string; options: ResolvedSelectorOption[] }>()
 
 const selected = ref(0)
+
+const selectOptions = computed(() =>
+  props.options.map((option, i) => ({ value: i, label: option.label })),
+)
 </script>
 
 <style scoped>
@@ -41,22 +49,6 @@ const selected = ref(0)
   letter-spacing: 0.1em;
   font-size: 0.68rem;
   color: var(--color-gold);
-}
-
-.example-selector__select {
-  font-family: var(--font-body);
-  text-transform: none;
-  letter-spacing: normal;
-  font-size: 0.95rem;
-  background: rgba(7, 8, 10, 0.9);
-  color: var(--parchment);
-  border: 1px solid rgba(202, 164, 90, 0.4);
-  padding: 0.5rem 0.7rem;
-  max-width: 28rem;
-}
-.example-selector__select:focus-visible {
-  outline: 2px solid var(--color-gold-light);
-  outline-offset: 2px;
 }
 
 .example-selector__panel {

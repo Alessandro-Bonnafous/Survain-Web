@@ -20,6 +20,7 @@
     "lede": "A layered, living, interconnected world. From the solitary land to the entire kingdom, build your lineage, conquer your enemies, write your legend.",
     "cta_primary": "Join the adventure",
     "cta_ghost": "Development log",
+    "cta_ghost_tooltip": "Work in progress",
     "scroll": "Scroll down"
   },
   "home": {

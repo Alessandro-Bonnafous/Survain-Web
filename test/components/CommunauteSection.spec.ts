@@ -22,6 +22,13 @@ describe('CommunauteSection', () => {
     expect(link.attributes('rel')).toBe('noopener')
   })
 
+  it('expose le YouTube (trailer) à côté du Discord (nouvel onglet)', () => {
+    const link = mountSection().get('.comm__youtube')
+    expect(link.attributes('href')).toBe(EXTERNAL_LINKS.trailer)
+    expect(link.attributes('target')).toBe('_blank')
+    expect(link.attributes('rel')).toBe('noopener')
+  })
+
   it('rend le lecteur de musiques avec les 3 pistes', () => {
     expect(mountSection().findAll('.music-player__track')).toHaveLength(3)
   })

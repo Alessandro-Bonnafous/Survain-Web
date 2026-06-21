@@ -20,6 +20,7 @@
     "lede": "Un monde stratifié, vivant, interconnecté. De la contrée solitaire au royaume entier, bâtissez votre lignée, conquérez vos ennemis, et écrivez votre légende.",
     "cta_primary": "Rejoindre l'aventure",
     "cta_ghost": "Carnet de développement",
+    "cta_ghost_tooltip": "Développement en cours",
     "scroll": "Faire défiler"
   },
   "home": {

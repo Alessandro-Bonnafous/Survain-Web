@@ -19,15 +19,17 @@ function mountSelector() {
 }
 
 describe('ExampleSelector', () => {
-  it('rend une option par choix et affiche la première par défaut', () => {
+  it('rend une option par choix et affiche la première par défaut', async () => {
     const wrapper = mountSelector()
-    expect(wrapper.findAll('option')).toHaveLength(2)
+    await wrapper.find('.select__toggle').trigger('click')
+    expect(wrapper.findAll('.select__option')).toHaveLength(2)
     expect(wrapper.find('.example-selector__panel').text()).toBe('Alpha')
   })
 
   it('met à jour le panneau quand on change de sélection', async () => {
     const wrapper = mountSelector()
-    await wrapper.find('select').setValue('1')
+    await wrapper.find('.select__toggle').trigger('click')
+    await wrapper.findAll('.select__option')[1].trigger('click')
     expect(wrapper.find('.example-selector__panel').text()).toBe('Beta')
   })
 })
