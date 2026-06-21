@@ -73,6 +73,12 @@ const selected = ref(0)
   background-color: rgba(202, 164, 90, 0.07);
   color: var(--color-gold-light);
 }
+/* Couleurs explicites des options (cf. CraftTree) : évite l'héritage du doré
+   clair de survol, illisible sur le surlignage clair du menu natif. */
+.example-selector__select option {
+  background-color: #0c0d10;
+  color: var(--parchment);
+}
 .example-selector__select:focus-visible {
   outline: 2px solid var(--color-gold-light);
   outline-offset: 2px;

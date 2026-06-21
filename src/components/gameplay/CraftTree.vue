@@ -322,6 +322,13 @@ const table = computed<TableData>(() => {
   background-color: rgba(202, 164, 90, 0.07);
   color: var(--color-gold-light);
 }
+/* Couleurs explicites des options : sinon elles héritent du `color` du select
+   (doré clair au survol) et deviennent illisibles sur le surlignage clair du
+   menu déroulant natif. */
+.craft__select option {
+  background-color: #0c0d10;
+  color: var(--parchment);
+}
 .craft__select:focus-visible {
   outline: 2px solid var(--color-gold-light);
   outline-offset: 2px;
