@@ -107,7 +107,7 @@
     },
     "regions": {
       "title": "Les Régions",
-      "summary": "Les Provinces s'unissent pour renverser le Seigneur PNJ et accéder au monde ouvert du Royaume.",
+      "summary": "Les Provinces s'unissent en Région : bibliothèque au cœur de la connaissance, chercheurs financés par les dîmes et coffre du Seigneur convoité.",
       "p0": "A travers son bureau politique, le Baron décide de rejoindre une Région, et s'associe à 9 autres Provinces.",
       "p1": "La bibliothèque est le cœur de la connaissance au sein de chaque Région. Financer les chercheurs PNJ nécessite des fonds importants qui proviennent des dîmes. La qualité des manuels (transformation des recettes apprises) dépend du haut niveau de sa structure ; par exemple une recette T3 de Lame de coutelas connue à 93% deviendra un manuel à 84% avec une bibliothèque de niveau 90%.",
       "p2": "L'or nécessaire au fonctionnement de la Région est détenu dans le coffre du Seigneur, qui sera la convoitise des autres Régions.",
