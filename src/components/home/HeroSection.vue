@@ -246,8 +246,7 @@ const wipTooltipId = 'hero-cta-ghost-tooltip'
     opacity 0.25s var(--ease-theatrical),
     transform 0.25s var(--ease-theatrical);
 }
-.hero__cta-wip:hover .hero__tooltip,
-.hero__cta-wip:focus-within .hero__tooltip {
+.hero__cta-wip:hover .hero__tooltip {
   opacity: 1;
   transform: translateX(-50%) translateY(0);
 }
