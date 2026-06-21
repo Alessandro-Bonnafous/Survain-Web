@@ -18,7 +18,7 @@
         </p>
         <p class="hero__lede">{{ t('hero.lede') }}</p>
         <div class="hero__ctas">
-          <Btn variant="primary">{{ t('hero.cta_primary') }}</Btn>
+          <Btn variant="primary" href="#communaute">{{ t('hero.cta_primary') }}</Btn>
           <span class="hero__cta-wip">
             <Btn variant="ghost" :aria-describedby="wipTooltipId">{{ t('hero.cta_ghost') }}</Btn>
             <span :id="wipTooltipId" class="hero__tooltip" role="tooltip">
