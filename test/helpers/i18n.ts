@@ -3,6 +3,8 @@ import fr from '@/i18n/locales/fr.json'
 import en from '@/i18n/locales/en.json'
 import frGameplay from '@/i18n/locales/fr/gameplay.json'
 import enGameplay from '@/i18n/locales/en/gameplay.json'
+import frForge from '@/i18n/locales/fr/forge.json'
+import enForge from '@/i18n/locales/en/forge.json'
 import enToolsItems from '@/i18n/locales/en/tools-items.json'
 
 /**
@@ -16,8 +18,13 @@ export function createTestI18n(locale: 'fr' | 'en' = 'fr') {
     locale,
     fallbackLocale: 'en',
     messages: {
-      fr: { ...fr, gameplay: frGameplay },
-      en: { ...en, gameplay: enGameplay, tools: { ...en.tools, items: enToolsItems } },
+      fr: { ...fr, gameplay: frGameplay, forge: frForge },
+      en: {
+        ...en,
+        gameplay: enGameplay,
+        forge: enForge,
+        tools: { ...en.tools, items: enToolsItems },
+      },
     },
   })
 }

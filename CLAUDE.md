@@ -280,6 +280,44 @@ npm run format   # Prettier
     NB : `AppNav` masque toujours les liens < 1180px (pas de menu burger — gap
     mobile préexistant, hors scope).
 
+- **2026-06-26 — Sprint M3 : migration du simulateur de forge (épopée #21)**
+  - Portage fidèle du mini-jeu legacy `OldSurvain-Web/Simulateur.html` (single-file
+    HTML/CSS/JS) vers Vue 3, sur une **page dédiée `/simulateur`** (layout `blank`,
+    ajoutée à `AppNav` + `AppFooter`, ordre Gameplay → **Forge** → Communauté).
+    Redirection `/forge → /simulateur`.
+  - **Flux complet (5 étapes)** porté : Matériaux (carte cliquable, 16 hotspots,
+    qualité = 25 %/bon matériau) → Fourneau (gestion chaleur, soufflet, cycles,
+    qualité `100−|DT|−|DC·5|`) → Forge (jeu de rythme 10 cycles, marteau/pince,
+    `100−défauts·5`) → Trempe (plage qui rétrécit, `100−ECi/20`) → Final (qualité
+    combinée). Toutes les formules reprises **à l'identique** du legacy.
+  - **Architecture** (logique découplée de l'UI, testable) :
+    - `config/forge.ts` — données typées (biomes, saisons, minerais + positions,
+      cibles °C, chemins d'assets).
+    - `composables/useForgeSimulator.ts` — cœur : état réactif + calculs + minuteries
+      centralisées **nettoyées au démontage** (`onBeforeUnmount`). Ticks exposés pour
+      les tests (déterministes, sans temps réel).
+    - `composables/useForgeAudio.ts` — 5 SFX (soufflet, fourneau en boucle, marteau,
+      pince, trempe), `Audio` créés paresseusement (SSR/test-safe), **mute**, garde
+      autoplay (cf. `MusicPlayer`).
+    - `components/forge/ForgeSimulator.vue` — UI : bandeau, jauges (transition CSS),
+      sablier (flip `.is-tick`), swaps d'images, hotspots d'action. `prefers-reduced-motion`
+      désactive les transitions. Habillage DA gravée (tokens), intérieur proche du legacy.
+  - **Assets** copiés, **renommés en kebab-case** (sans accent/espace) et
+    **optimisés WebP** via `scripts/compress-forge-assets.mjs` (sharp :
+    redimensionnement ≤ 1100 px + WebP q80, alpha préservé) → **38,3 Mo → 1,8 Mo
+    (−95 %)**. `public/images/forge/` (25 `.webp`) + `public/sons/forge/` (5 sons).
+    Chemins centralisés dans `config/forge.ts`. Servis depuis `public/` (hors
+    `vite-imagetools`).
+  - i18n : namespace dédié `forge` (fichiers `locales/{fr,en}/forge.json`), fusionné
+    dans `i18n/index.ts` **et** `test/helpers/i18n.ts`. Clé `nav.simulateur`.
+  - Tests : `useForgeSimulator.spec` (16 — formules de qualité, ticks fourneau/forge,
+    transitions, garde `start`/`reset`) + `ForgeSimulator.spec` (smoke : intro,
+    passage matériaux + 16 hotspots, locale). **78 tests verts**, lint + build SSG OK
+    (`dist/simulateur.html` rendu). Action/animation/son validés manuellement par Aless.
+  - L'épopée #6 (« différé : maquette Thierry + simulateur ») avait été scindée :
+    simulateur → #21 (fait ici) ; volet design Thierry abandonné (la refonte DA gravée
+    Sprint A/B l'a remplacé).
+
 ## Décisions en attente
 
 - **Intégration maquette Thierry** (UX/design) — en cours côté Thierry. Le

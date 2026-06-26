@@ -19,6 +19,7 @@ const routes = setupLayouts(generatedRoutes)
 // - /community → /#communaute (section de la home)
 routes.push({ path: '/tools', redirect: '/gameplay' })
 routes.push({ path: '/community', redirect: '/#communaute' })
+routes.push({ path: '/forge', redirect: '/simulateur' })
 
 // `createApp` est consommé par vite-ssg pour le rendu statique et l'hydratation.
 export const createApp = ViteSSG(

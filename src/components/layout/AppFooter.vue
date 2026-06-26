@@ -24,6 +24,9 @@
             <RouterLink to="/gameplay">{{ t('nav.gameplay') }}</RouterLink>
           </li>
           <li>
+            <RouterLink to="/simulateur">{{ t('nav.simulateur') }}</RouterLink>
+          </li>
+          <li>
             <RouterLink to="/#communaute">{{ t('nav.communaute') }}</RouterLink>
           </li>
         </ul>

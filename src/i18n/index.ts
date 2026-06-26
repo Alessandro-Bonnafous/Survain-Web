@@ -3,6 +3,8 @@ import fr from './locales/fr.json'
 import en from './locales/en.json'
 import frGameplay from './locales/fr/gameplay.json'
 import enGameplay from './locales/en/gameplay.json'
+import frForge from './locales/fr/forge.json'
+import enForge from './locales/en/forge.json'
 import enToolsItems from './locales/en/tools-items.json'
 
 export const SUPPORTED_LOCALES = ['fr', 'en'] as const
@@ -18,7 +20,12 @@ export const i18n = createI18n({
   locale: DEFAULT_LOCALE,
   fallbackLocale: 'en',
   messages: {
-    fr: { ...fr, gameplay: frGameplay },
-    en: { ...en, gameplay: enGameplay, tools: { ...en.tools, items: enToolsItems } },
+    fr: { ...fr, gameplay: frGameplay, forge: frForge },
+    en: {
+      ...en,
+      gameplay: enGameplay,
+      forge: enForge,
+      tools: { ...en.tools, items: enToolsItems },
+    },
   },
 })
