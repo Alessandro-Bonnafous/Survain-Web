@@ -23,6 +23,7 @@ describe('AppFooter', () => {
       '/#jeu',
       '/#ascension',
       '/gameplay',
+      '/simulateur',
       '/#communaute',
     ])
   })

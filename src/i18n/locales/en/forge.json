@@ -1,0 +1,115 @@
+{
+  "page": {
+    "eyebrow": "Hall of Artisans",
+    "title": "Forge Simulator",
+    "intro": "Pick a biome, gather the right materials, then forge your blade: furnace, hammering and quench. Every move counts — sound and rhythm guide you.",
+    "stage": "T3 — Hall of Artisans"
+  },
+  "biomeLabel": "Choose your biome",
+  "biomePlaceholder": "—",
+  "biomes": {
+    "cote": "Maritime Coast",
+    "foret": "Forest",
+    "montagnes": "Mountains",
+    "plaines": "Plains"
+  },
+  "weaponLabel": "Weapon",
+  "weaponPlaceholder": "Choose a biome",
+  "weapons": {
+    "cote": "Cutlass",
+    "foret": "Forest Sword",
+    "montagnes": "Miner's Axe",
+    "plaines": "Cavalry Foil"
+  },
+  "seasonLabel": "Season",
+  "seasonWeather": "Weather",
+  "seasonEffect": "Temp. effect",
+  "seasonPlaceholder": "-",
+  "seasons": {
+    "automne": { "name": "Autumn", "weather": "Humid", "effect": "Heats more slowly" },
+    "ete": { "name": "Summer", "weather": "Hot and dry", "effect": "Heats faster" },
+    "hiver": { "name": "Winter", "weather": "Intense cold", "effect": "Rapid cooling" },
+    "printemps": { "name": "Spring", "weather": "Stable", "effect": "Balanced conditions" }
+  },
+  "quality": "Quality",
+  "qualityHint": "The number of furnace cycles matters most",
+  "temperature": "Temperature",
+  "start": "Start",
+  "restart": "Forge a new blade",
+  "mute": "Mute sound",
+  "unmute": "Unmute sound",
+  "minerals": {
+    "sel-gemme": "Rock salt",
+    "cuivre-marin": "Sea copper",
+    "perle-minerale": "Mineral pearl",
+    "fer-vaseux": "Silty iron (Marsh)",
+    "cuivre": "Copper",
+    "fer": "Iron",
+    "argent": "Silver",
+    "orichalque": "Orichalcum (Jungle)",
+    "fer-brut": "Raw iron",
+    "or": "Gold",
+    "mithril": "Mithril",
+    "obsidienne": "Red obsidian (Volcano)",
+    "etain": "Tin",
+    "zinc": "Zinc",
+    "quartz-pur": "Pure quartz",
+    "cristal-solaire": "Solar crystal (Desert)"
+  },
+  "materials": {
+    "title": "Material selection",
+    "selected": "Selected materials",
+    "none": "No material selected.",
+    "hint": "Check the weapon recipes in the craft tree",
+    "next": "Furnace"
+  },
+  "furnace": {
+    "title": "Furnace",
+    "next": "Forge",
+    "bellows": "Pump the bellows",
+    "tongs": "Tongs",
+    "durationPerfect": "Perfect timing",
+    "durationShort": "Cooked too briefly",
+    "durationLong": "Cooked too long",
+    "heatControlled": "Heat under control",
+    "heatCracks": "Cracks from lack of heat",
+    "heatBurnt": "Blackened by overheating",
+    "detail": "Cycles = {dc} / Heat = {neg} / {pos}"
+  },
+  "forge": {
+    "title": "Forge",
+    "next": "Quench",
+    "tongs": "Tongs",
+    "hammer": "Hammer",
+    "pince": "Tongs",
+    "default": "Forge in rhythm",
+    "goodRhythm": "Good rhythm",
+    "defects": "{n} rhythm error | {n} rhythm errors"
+  },
+  "trempe": {
+    "title": "Quench",
+    "next": "End",
+    "pince": "Quenching tongs",
+    "default": "Temperature must stay within the quench range",
+    "tooFast": "Quenched too fast",
+    "tooSlow": "Quenched too slow",
+    "perfect": "Perfect quench",
+    "eciLow": "Low ECi = {v}",
+    "eciHigh": "High ECi = {v}"
+  },
+  "final": {
+    "title": "Craft complete",
+    "quality": "You now hold your weapon's blade at quality {q}%.",
+    "reproduce": "This quality will be reproduced automatically for future crafts of this item.",
+    "teach": "You will be able to teach this craft to one of your village artisans.",
+    "library": "You can also visit a library to write this recipe into a (sellable) manual.",
+    "finalize": "To finish crafting your weapon, you will also need to craft:",
+    "items": {
+      "manche": "the handle \"wood craft\"",
+      "bandeau": "the wrist band \"animal craft\"",
+      "aiguisement": "the sharpening \"marine craft\"",
+      "ornement": "the ornament \"fiber craft\""
+    },
+    "ref": "(refer to the craft tree)"
+  }
+}

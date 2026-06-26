@@ -1,0 +1,115 @@
+{
+  "page": {
+    "eyebrow": "Hall des Artisans",
+    "title": "Simulateur de forge",
+    "intro": "Choisis un biome, réunis les bons matériaux, puis forge ta lame : fourneau, martelage et trempe. Chaque geste compte — le son et le rythme te guident.",
+    "stage": "T3 — Hall des Artisans"
+  },
+  "biomeLabel": "Choisir votre biome",
+  "biomePlaceholder": "—",
+  "biomes": {
+    "cote": "Côte maritime",
+    "foret": "Forêt",
+    "montagnes": "Montagnes",
+    "plaines": "Plaines"
+  },
+  "weaponLabel": "Arme",
+  "weaponPlaceholder": "Choisissez un biome",
+  "weapons": {
+    "cote": "Coutelas",
+    "foret": "Épée forestière",
+    "montagnes": "Hache de mineur",
+    "plaines": "Fleuret cavalier"
+  },
+  "seasonLabel": "Saison",
+  "seasonWeather": "Météo",
+  "seasonEffect": "Effet T°",
+  "seasonPlaceholder": "-",
+  "seasons": {
+    "automne": { "name": "Automne", "weather": "Humide", "effect": "Chauffe plus lentement" },
+    "ete": { "name": "Été", "weather": "Chaud sec", "effect": "Chauffe plus rapidement" },
+    "hiver": { "name": "Hiver", "weather": "Froid intense", "effect": "Refroidissement rapide" },
+    "printemps": { "name": "Printemps", "weather": "Stable", "effect": "Conditions équilibrées" }
+  },
+  "quality": "Qualité",
+  "qualityHint": "Le nombre de cycle dans le fourneau en priorité",
+  "temperature": "Température",
+  "start": "Commencer",
+  "restart": "Forger une nouvelle lame",
+  "mute": "Couper le son",
+  "unmute": "Activer le son",
+  "minerals": {
+    "sel-gemme": "Sel gemme",
+    "cuivre-marin": "Cuivre marin",
+    "perle-minerale": "Perle minérale",
+    "fer-vaseux": "Fer vaseux (Marais)",
+    "cuivre": "Cuivre",
+    "fer": "Fer",
+    "argent": "Argent",
+    "orichalque": "Orichalque (Jungle)",
+    "fer-brut": "Fer brut",
+    "or": "Or",
+    "mithril": "Mithril",
+    "obsidienne": "Obsidienne rouge (Volcan)",
+    "etain": "Étain",
+    "zinc": "Zinc",
+    "quartz-pur": "Quartz pur",
+    "cristal-solaire": "Cristal solaire (Désert)"
+  },
+  "materials": {
+    "title": "Choix des matériaux",
+    "selected": "Matériaux sélectionnés",
+    "none": "Aucun matériau sélectionné.",
+    "hint": "Consulte les recettes des armes dans l'arbre de craft",
+    "next": "Fourneau"
+  },
+  "furnace": {
+    "title": "Fourneau",
+    "next": "Forge",
+    "bellows": "Activer le soufflet",
+    "tongs": "Pince",
+    "durationPerfect": "Durée parfaite",
+    "durationShort": "Cuisson trop courte",
+    "durationLong": "Cuisson trop longue",
+    "heatControlled": "Chaleur maîtrisée",
+    "heatCracks": "Fissures par manque de chaleur",
+    "heatBurnt": "Noircie par surchauffe",
+    "detail": "Cycles = {dc} / Chaleur = {neg} / {pos}"
+  },
+  "forge": {
+    "title": "Forge",
+    "next": "Trempe",
+    "tongs": "Pince",
+    "hammer": "Marteau",
+    "pince": "Pince",
+    "default": "Forge en rythme",
+    "goodRhythm": "Bon rythme",
+    "defects": "{n} erreur de rythme | {n} erreurs de rythme"
+  },
+  "trempe": {
+    "title": "Trempe",
+    "next": "Fin",
+    "pince": "Pince de trempe",
+    "default": "La température doit rester dans la plage de trempe",
+    "tooFast": "Trempe trop rapide",
+    "tooSlow": "Trempe trop lente",
+    "perfect": "Trempe parfaite",
+    "eciLow": "ECi bas = {v}",
+    "eciHigh": "ECi haut = {v}"
+  },
+  "final": {
+    "title": "Fin du Craft",
+    "quality": "Tu disposes à présent de la lame de ton arme avec la qualité {q} %.",
+    "reproduce": "Cette qualité sera reproduite automatiquement pour les prochains craft de cet objet.",
+    "teach": "Tu pourras enseigner ce craft à l'un de tes artisans dans ton village.",
+    "library": "Tu peux aussi aller dans une bibliothèque pour écrire cette recette dans un manuel (vendable).",
+    "finalize": "Pour finaliser la fabrication de ton arme, il faudra également crafter :",
+    "items": {
+      "manche": "le manche « bois craft »",
+      "bandeau": "le bandeau du poignet « animal craft »",
+      "aiguisement": "l'aiguisement « marines craft »",
+      "ornement": "l'ornement « fibres craft »"
+    },
+    "ref": "(se référer à l'arbre de craft)"
+  }
+}
